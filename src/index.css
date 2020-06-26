@@ -7,8 +7,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  box-sizing: border-box;
+  
   display: grid;
-  grid-template-columns: 1fr minmax(1fr, 1200px) 1fr;
   height:100%;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
 }

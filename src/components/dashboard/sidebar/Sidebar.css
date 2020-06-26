@@ -1,0 +1,26 @@
+.sidebar {
+    grid-column: 1 / 2;
+    padding: 3.125em 1em 0;
+    display: grid;
+    grid-template-rows: repeat(2, 50px);
+}
+
+.sidebar a {
+    text-decoration: none;
+}
+
+.sidebar-button {
+    color: #707070;
+    font-size: 1.125rem;
+    font-weight: 400;
+    display:flex;
+    align-items: center;
+    height: 1.5em;
+    border: 0;
+    text-decoration: none;
+}
+
+.active {
+    font-weight: 700;
+    color: #000000;
+}

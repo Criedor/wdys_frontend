@@ -1,0 +1,5 @@
+.body-project {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 380px));
+    column-gap: 1.875em;
+}

@@ -1,0 +1,31 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    display: grid;
+    grid-column: 1 / span 3;
+    grid-template-columns:1fr minmax(280px, 1140px) 1fr;
+    background: #fff;
+    width:100%;
+    z-index: 2;
+    color: #fff;
+    background-color: #3F3D56;
+}
+
+.navbar-contain {  
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+    height: 5em;
+}
+
+.navbar-logo svg {
+    cursor: pointer;
+    width: 110px;
+}
+
+.navbar-logger {
+    cursor: pointer;
+    text-transform: uppercase;
+}

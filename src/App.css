@@ -2,11 +2,5 @@
   display: grid;
   grid-column: 1 / span 3;
   grid-template-columns:1fr minmax(280px, 1140px) 1fr;
-  height: 500px;
-  border:1px solid red;
-}
-
-.placeholder {
-  height:500px;
-  border: 1px solid blue;
+  grid-template-rows: 100vh;
 }
