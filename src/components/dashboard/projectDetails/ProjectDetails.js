@@ -6,18 +6,9 @@ import Fade from '@material-ui/core/Fade';
 import MoreVert from '@material-ui/icons/MoreVert';
 import SelectFields from '../selectFields/SelectField'
 import './ProjectDetails.css';
-
-{/* <label>Translation Language(s) * </label>
-<select multiple>
-  <option value='English'>English</option>
-  <option value='Dutch'>Dutch</option>
-  <option value='French'>French</option>
-  <option value='German'>German</option>
-  <option value='Italian'>Italian</option>
-  <option value='Portuguese'>Portuguese</option>
-</select>
-<input type='text' value='English' placeholder='Select base language' /> */}
-
+import SelectAutocomplete from '../selectFields/SelectAutocomplete';
+import DatePicker from '../selectFields/DatePicker';
+import { FormControl } from '@material-ui/core';
 
 const ProjectDetails = () => {
 
@@ -58,13 +49,27 @@ const ProjectDetails = () => {
               </Menu>
             </div>
             <div className='col-left-info'>
-               
-              <label>Base Language </label>
-              <input type='text' defaultValue='English' placeholder='Select base language' />
-              <SelectFields />
-              
+              <FormControl >
+                <div className='field-wrapper'>
+                  <label>Base Language </label>
+                  <input className='custom-input' type='text' placeholder='Select base language' />
+                </div>
+                <div className='field-wrapper'>
+                  <label>Select Language(s) * </label>
+                  <SelectFields />
+                </div>
+                <div className='field-wrapper'>
+                  <label>Select Language(s) * </label>
+                  <SelectAutocomplete />
+                </div>
+                <div className='field-wrapper'>
+                  <label>Deadline </label>
+                  <DatePicker />
+                </div>
+              </FormControl>
             </div>
-            </div>
+          </div>
+
             <div className='title-gray'>
               Project pages
             </div>
