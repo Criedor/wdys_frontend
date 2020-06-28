@@ -8,9 +8,8 @@ const Navigation = ({ openModal }) => {
   return (
     <div className="navbar">
         <div className='navbar-contain'>
-          
         <div className='navbar-logo nav-btn'><Logo/></div>
-        <div className='navbar-logger' onClick={() => openModal()}>Login</div>
+        <div className='navbar-logger' onClick={() => openModal(1,1)}>Login</div>
         </div>
     </div>
   );

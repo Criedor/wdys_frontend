@@ -28,6 +28,11 @@
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 }
 
+/* For hiding the background image on Delete Modal pages */
+.none {
+    background-image: none;
+}
+
 .modal-contain form {
     display: flex;
     flex-direction: column;
@@ -58,19 +63,6 @@
     color: #b2b2b2;
 }
 
-.modal-contain form button {
-    height:3em;
-    border: 0;
-    background: #3F3D56;
-    color: #fff;
-    text-transform: uppercase;
-    width: 250px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    margin: 1em auto;
-    cursor: pointer;
-}
-
 .modal-contain p {
     text-align: center;
     color: #3F3D56;
@@ -89,4 +81,26 @@
 
 .login-body {
     padding: 1em 4em 3em 4em;
+}
+
+.center {
+    text-align: center;
+}
+
+.modal-contain form h2.mt-0 {
+    margin-top: 0;
+}
+
+strong {
+    margin-top:3.125em;
+}
+
+strong, p.message {
+    font-size: 1.25rem;
+}
+
+.flex-inline {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }

@@ -1,26 +1,61 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import { useRouteMatch } from 'react-router-dom'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Sidebar from './sidebar/Sidebar'
 import CrumbsAction from './crumbsAction/CrumbsAction';
+import ProjectCreate from './projectCreate/ProjectCreate'
 import ProjectDetails from './projectDetails/ProjectDetails'
-import Project from './project/Project'
+import Projects from './project/Projects'
 
 import './Dashboard.css';
 
+// Theme to control the width of the styling of the MUI componets found in components/dashboard/selectFields directory
+const inputTheme320 = createMuiTheme({
+  overrides: {
+    MuiInputBase: {
+      root: {
+        width: 320,
+      }
+    },
+  }
+})
 
-const Dashboard = () => {
+const inputTheme500 = createMuiTheme({
+  overrides: {
+    MuiInputBase: {
+      root: {
+        width: 500,
+      }
+    },
+  }
+})
 
-    
+
+const Dashboard = ({ openModal }) => {
+
   return (
 
     <div className='dashboard'>
         <Sidebar />
-        <div className='body'>
+        <div className='dashboard-body'>
             <CrumbsAction />
             <Switch>
-              <Route exact path='/projects/:projID' render={props => <ProjectDetails {...props} />} />
-              <Route exact path='/projects' render={props => <Project {...props} />} />
+              <Route exact path='/projects/create' render={props => 
+                <ThemeProvider theme={inputTheme500}>
+                  <ProjectCreate {...props} /> 
+                </ThemeProvider>
+              } />
+              <Route exact path='/projects/:projID' render={props => 
+                <ThemeProvider theme={inputTheme320}>
+                  <ProjectDetails openModalDeleteProject={openModal} {...props} />
+                </ThemeProvider>
+              } />
+              <Route exact path='/projects' render={props => 
+                <ThemeProvider theme={inputTheme320}>
+                  <Projects {...props} />
+                  </ThemeProvider>
+              } />
             </Switch>
         </div>
     </div>

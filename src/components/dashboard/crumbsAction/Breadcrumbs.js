@@ -41,9 +41,9 @@ const Breadcrumbs = props => {
                 console.log(pathnames)
                 const isLast = index === pathnames.length - 1;
                  return isLast ? (
-                 <div>{name}</div>
+                 <div key={name}>{name}</div>
                     ) : (
-                    <Link onClick={() => history.push(routeTo)} color="inherit" className={classes.link}> <div className={classes.link}>{name}</div> </Link>
+                    <Link key={name} onClick={() => history.push(routeTo)} color="inherit" className={classes.link}> <div className={classes.link}>{name}</div> </Link>
                     )
             })}
         </MuiBreadcrumbs>

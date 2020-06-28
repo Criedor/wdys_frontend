@@ -12,7 +12,7 @@ const TranslatorsDashboard = () => {
 
     <div className='dashboard'>
         <Sidebar />
-        <div className='body'>
+        <div className='dashboard-body'>
             <CrumbsAction />
             <div className='body-translators'>
                 <CardTranslators />

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Modal.css';
 
-const SignIn = ({ showLoginSignIn }) => {
+const SignIn = ({ openModal }) => {
 
     return (
         <>
@@ -15,8 +15,8 @@ const SignIn = ({ showLoginSignIn }) => {
                 
                 <label> Password:</label>
                 <input type='password' name='password' />
-                <button>Sign up</button>
-                <p>If you already have an account, please <strong onClick={() => showLoginSignIn()}>login</strong></p>
+                <button className='action blue'>Sign up</button>
+                <p>If you already have an account, please <strong onClick={() => openModal(1,1)}>login</strong></p>
             </form>
         </>
     )
