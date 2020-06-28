@@ -2,3 +2,27 @@
     grid-column: 2 / 3;
     margin-top: 5em;
 }
+
+.action {
+    height:3em;
+    border: 0;
+    color: #fff;
+    text-transform: uppercase;
+    width: 250px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin: 1em auto;
+    cursor: pointer;
+}
+
+.blue {
+    background: #3F3D56;
+}
+
+.danger {
+    background: #D95459;
+}
+
+.w205 {
+    width: 205px;
+}

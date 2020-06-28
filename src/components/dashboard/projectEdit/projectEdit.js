@@ -3,10 +3,10 @@ import MoreVert from '@material-ui/icons/MoreVert';
 import SelectField from '../selectFields/SelectField'
 import SelectAutocomplete from '../selectFields/SelectAutocomplete';
 import DatePicker from '../selectFields/DatePicker';
-import { Button, Menu, MenuItem, Fade } from '@material-ui/core';
+import { Button, Menu, MenuItem, Fade, FormControl } from '@material-ui/core';
 import '../Dashboard.css';
 
-const ProjectDetails = ({ openModalDeleteProject }) => {
+const ProjectEdit = () => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -15,12 +15,8 @@ const ProjectDetails = ({ openModalDeleteProject }) => {
       setAnchorEl(event.currentTarget);
       };
 
-console.log({testTheProp: openModalDeleteProject})
-
-
   const handleClose = () => {
       setAnchorEl(null);
-      openModalDeleteProject(1,3)
       };
   
   return (
@@ -50,30 +46,30 @@ console.log({testTheProp: openModalDeleteProject})
             </div>
             <div className='col-left-info'>
               <form > 
-              {/* <FormControl > */}
+              <FormControl >
                 <div className='field-wrapper'>
                   <label htmlFor="proj-details-name">Project Name </label>
                   <input id="proj-details-name" className='custom-input' type='text' placeholder='Assign a project name' />
                 </div>
-              {/* </FormControl>
-              <FormControl > */}
+              </FormControl>
+              <FormControl >
                 <div className='field-wrapper'>
                   <label htmlFor={'proj-details-base-lang'}>Base Language * </label>
                   <SelectField id={'proj-details-base-lang'} />
                 </div>
-                {/* </FormControl>
-                <FormControl > */}
+                </FormControl>
+                <FormControl >
                 <div className='field-wrapper w-320'>
                   <label htmlFor={'proj-details-trans-lang'} >Translation Language(s) * </label>
                   <SelectAutocomplete id={'proj-details-trans-lang'}  />
                 </div>
-                {/* </FormControl>
-                <FormControl > */}
+                </FormControl>
+                <FormControl >
                 <div className='field-wrapper'>
                   <label htmlFor={'proj-details-deadline'}>Deadline </label>
                   <DatePicker id={'proj-details-deadline'} />
                 </div>
-              {/* </FormControl> */}
+              </FormControl>
               </form>
             </div>
           </div>
@@ -85,4 +81,4 @@ console.log({testTheProp: openModalDeleteProject})
   );
 }
 
-export default ProjectDetails;
+export default ProjectEdit;

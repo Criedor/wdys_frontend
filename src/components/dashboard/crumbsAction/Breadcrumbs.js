@@ -1,9 +1,10 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Breadcrumbs as MuiBreadcrumbs, Link } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import './CrumbsAction.css';
-import { withRouter } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -40,9 +41,9 @@ const Breadcrumbs = props => {
                 console.log(pathnames)
                 const isLast = index === pathnames.length - 1;
                  return isLast ? (
-                 <div>{name}</div>
+                 <div key={name}>{name}</div>
                     ) : (
-                    <Link onClick={() => history.push(routeTo)} color="inherit" className={classes.link}> <div className={classes.link}>{name}</div> </Link>
+                    <Link key={name} onClick={() => history.push(routeTo)} color="inherit" className={classes.link}> <div className={classes.link}>{name}</div> </Link>
                     )
             })}
         </MuiBreadcrumbs>
