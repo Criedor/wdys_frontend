@@ -1,0 +1,19 @@
+/* GRIDS FOR TABLES*/
+
+/* Grid for AssignedTranslatorsTM.js */
+
+.assigned-trans-TM {
+    display: grid;
+    grid-template-columns: 5fr 5fr 1fr;
+    grid-template-rows: 80px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    align-items: center;
+    padding: 0 1em;
+}
+
+.header {
+    background-color: #000;
+    grid-template-rows: 50px;
+    color: #ffffff;
+    margin-top: 20px;
+}

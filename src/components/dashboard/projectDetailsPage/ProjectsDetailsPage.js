@@ -3,6 +3,7 @@ import ModalContext from "../../../contexts/ModalContext";
 import { Link, useRouteMatch } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
+import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
 import "../Dashboard.css";
 
 const ProjectDetailsPage = () => {
@@ -75,14 +76,9 @@ const ProjectDetailsPage = () => {
             <div className="assign-button">+</div>
           </Link>
         </div>
-        <div
-          style={{
-            width: "100%",
-            height: "50px",
-            backgroundColor: "red",
-            marginTop: "20px",
-          }}
-        ></div>
+        <div>
+          <AssignedTranslatorsTM />
+        </div>
       </div>
     </div>
   );

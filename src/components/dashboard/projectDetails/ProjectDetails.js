@@ -3,6 +3,7 @@ import ModalContext from "../../../contexts/ModalContext";
 import { Link, useParams } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
+import ProjectPagesTM from "../tables/ProjectPagesTM";
 import "../Dashboard.css";
 
 const ProjectDetails = () => {
@@ -77,8 +78,12 @@ const ProjectDetails = () => {
           </div>
         </div>
       </div>
-
-      <div className="title-gray">Project pages</div>
+      <div className="column-right">
+        <div className="title-gray">Project pages</div>
+        <div>
+          <ProjectPagesTM />
+        </div>
+      </div>
     </div>
   );
 };
