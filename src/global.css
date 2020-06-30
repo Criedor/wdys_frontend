@@ -4,7 +4,7 @@
 }
 
 .action {
-    height:3em;
+    height: 3em;
     border: 0;
     color: #fff;
     text-transform: uppercase;
@@ -23,6 +23,20 @@
     background: #D95459;
 }
 
+.green {
+    color: #01C0AD;
+}
+
 .w205 {
     width: 205px;
+}
+
+a {
+    text-decoration: none;
+    color: initial;
+}
+
+li a:hover,
+a:hover {
+    text-decoration: none;
 }

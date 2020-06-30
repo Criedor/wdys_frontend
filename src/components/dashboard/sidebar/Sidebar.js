@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouteMatch, Link } from 'react-router-dom'
-import Folder from '@material-ui/icons/Folder';
+import { Folder } from '@material-ui/icons';
 import Translate from '@material-ui/icons/Translate';
 import './Sidebar.css';
 

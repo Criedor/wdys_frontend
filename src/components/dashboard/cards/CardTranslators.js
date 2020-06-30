@@ -1,57 +1,64 @@
-import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
-import MoreVert from '@material-ui/icons/MoreVert';
-import './Card.css';
-
+import React, { useContext } from "react";
+import ModalContext from "../../../contexts/ModalContext";
+import { Link, useRouteMatch, useParams } from "react-router-dom";
+import { Button, Menu, MenuItem } from "@material-ui/core";
+import MoreVert from "@material-ui/icons/MoreVert";
+import "./Card.css";
 
 const Card = () => {
-
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-        };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-        };
-    
-  return (
-
-    <div className='card'>
-        <div className='card-top'>
-            James Scotch
-            <Button 
-                aria-controls="fade-menu" 
-                aria-haspopup="true" 
-                onClick={handleClick} 
-                style={{padding: 0, minWidth: 0}}
-            >
-                <MoreVert style={{color: '#ffffff'}} />
-            </Button>
-            <Menu
-                id="fade-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={open}
-                onClose={handleClose}
-                TransitionComponent={Fade}
-            >
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
-                <MenuItem onClick={handleClose}>Delete</MenuItem>
-            </Menu>
-        </div>
-        <div className='card-bottom'>
-            <div className='project-info'>Languages: <span>German, Italian, Portuguese</span></div>
-            <div className='project-info'>Email: <span>james.matthew.scotch@email.com</span></div>
-        </div>
-    </div>
-
+  const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
+    ModalContext
   );
-}
+
+  // router url parameters
+  const { userID } = useParams();
+  const match = useRouteMatch();
+
+  return (
+    <div className="card">
+      <div className="card-top">
+        <Link to={`${match.url}/${userID}`} style={{ color: "#ffffff" }}>
+          Translator's Name
+        </Link>
+        <Button
+          aria-controls="fade-menu"
+          aria-haspopup="true"
+          onClick={(e) => setAnchorEl(e.currentTarget)}
+          style={{ padding: 0, minWidth: 0 }}
+        >
+          <MoreVert style={{ color: "#ffffff" }} />
+        </Button>
+        <Menu
+          id="fade-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={open}
+          onClose={(e) => setAnchorEl(false)}
+        >
+          <MenuItem
+            onClick={() => {
+              setModal(1);
+              setModalOption(4);
+              setAnchorEl(false);
+            }}
+          >
+            Remove
+          </MenuItem>
+        </Menu>
+      </div>
+      <Link to={`${match.url}/${userID}`}>
+        <div className="card-bottom">
+          <div className="project-info">
+            Languages:
+            <span> German, Italian, Portuguese</span>
+          </div>
+          <div className="project-info">
+            Email: <span> james.matthew.scotch@email.com</span>
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+};
 
 export default Card;

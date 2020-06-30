@@ -1,23 +1,22 @@
 import React, { useContext } from "react";
 import ModalContext from "../../../contexts/ModalContext";
-import { Link, useParams } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import "../Dashboard.css";
 
-const ProjectDetails = () => {
+const ProjectDetailsPage = () => {
   const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
     ModalContext
   );
 
-  const { projID } = useParams();
-  // const match = useRouteMatch();
+  const match = useRouteMatch();
 
   return (
     <div className="body-project-details">
       <div className="col-left-380">
         <div className="title-gray">
-          Project Name
+          Page Name
           <Button
             aria-controls="fade-menu"
             aria-haspopup="true"
@@ -31,16 +30,10 @@ const ProjectDetails = () => {
             anchorEl={anchorEl}
             keepMounted
             open={open}
-            onClose={() => setAnchorEl(false)}
+            onClose={(e) => setAnchorEl(false)}
           >
-            <Link to={`${projID}/update`}>
-              <MenuItem
-                onClick={() => {
-                  setAnchorEl(false);
-                }}
-              >
-                Edit
-              </MenuItem>
+            <Link to={`${match.url}/update`}>
+              <MenuItem>Edit</MenuItem>
             </Link>
             <MenuItem
               onClick={() => {
@@ -55,32 +48,44 @@ const ProjectDetails = () => {
         </div>
         <div className="col-left-info">
           <div className="field-wrapper">
-            <label>Base Language </label>
-            <div className="custom-result"> Language </div>
+            <label>From </label>
+            <div className="custom-result"> Project Name </div>
           </div>
 
           <div className="field-wrapper w-320">
-            <label>Translation Language(s) </label>
-            <div className="custom-result"> Translation language(s) </div>
+            <label>Description </label>
+            <div className="custom-result"> Blah, blah, blah... </div>
           </div>
 
           <div className="field-wrapper">
             <label>Deadline </label>
             <div className="custom-result"> 29/06/2020 </div>
           </div>
-
-          <div className="field-wrapper">
-            <label htmlFor={"proj-details-deadline"}>Project ID </label>
-            <div className="custom-result green">
-              wdys-project-name-02943r734r39
-            </div>
-          </div>
         </div>
       </div>
-
-      <div className="title-gray">Project pages</div>
+      <div className="column-right">
+        <div className="title-gray">
+          Translators
+          <Link
+            onClick={() => {
+              setModal(1);
+              setModalOption(5);
+            }}
+          >
+            <div className="assign-button">+</div>
+          </Link>
+        </div>
+        <div
+          style={{
+            width: "100%",
+            height: "50px",
+            backgroundColor: "red",
+            marginTop: "20px",
+          }}
+        ></div>
+      </div>
     </div>
   );
 };
 
-export default ProjectDetails;
+export default ProjectDetailsPage;

@@ -12,7 +12,7 @@ const DatePicker = ({ id }) => {
     setSelectedDate(date);
   };
 
-  console.log({selectDate: id})
+  // console.log({selectDate: id})
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
