@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ModalContext from '../../contexts/ModalContext'
 import './Modal.css';
 
 
 
-const Login = ({ openModal }) => {
+const Login = () => {
+
+  const { setModal, setModalOption } = useContext(ModalContext)
 
   return (
     <>
+      <div className='login-body'>
         <form action='#' method='POST'>
             <h2>Login </h2>
             
@@ -18,8 +22,9 @@ const Login = ({ openModal }) => {
 
             <button className='action blue'>Login</button>
 
-            <p>If you haven't yet created an account, please <strong onClick={() => openModal(1,2)}>sign up</strong></p>
+            <p>If you haven't yet created an account, please <strong onClick={() => {setModal(1); setModalOption(2)}}>sign up</strong></p>
         </form>
+      </div>
     </>
 
   );
