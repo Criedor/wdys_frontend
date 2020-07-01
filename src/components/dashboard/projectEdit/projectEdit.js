@@ -2,6 +2,7 @@ import React from "react";
 import SelectAutocomplete from "../selectFields/SelectAutocomplete";
 import DatePicker from "../selectFields/DatePicker";
 import { FormControl } from "@material-ui/core";
+import ProjectPagesTM from "../tables/ProjectPagesTM";
 import "../Dashboard.css";
 
 const ProjectEdit = () => {
@@ -59,8 +60,12 @@ const ProjectEdit = () => {
           </form>
         </div>
       </div>
-
-      <div className="title-gray">Project pages</div>
+      <div className="column-right">
+        <div className="title-gray">Project pages</div>
+        <div>
+          <ProjectPagesTM />
+        </div>
+      </div>
     </div>
   );
 };

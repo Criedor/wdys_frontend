@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { FormControl } from "@material-ui/core";
 import ModalContext from "../../../contexts/ModalContext";
 import { Link } from "react-router-dom";
@@ -6,6 +7,12 @@ import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
 import "../Dashboard.css";
 
 const ProjectDetailsPageEdit = () => {
+  let { projID, basePageID } = useParams();
+
+  console.log({ projID: projID });
+
+  console.log({ basePageID: basePageID });
+
   const handleCreateProjForm = (e) => {
     e.preventDefault();
   };
@@ -45,14 +52,15 @@ const ProjectDetailsPageEdit = () => {
               <div className="field-wrapper">
                 <label htmlFor={"proj-details-page-deadline"}>Deadline </label>
                 <div className="field-wrapper">
-                <div className="custom-result"> 11/07/2020 </div>
-              </div>
+                  <div className="custom-result"> 11/07/2020 </div>
+                </div>
               </div>
             </FormControl>
-           
-            <button className="action blue" type="submit">
-              save
-            </button>
+            <Link to={`/projects/${projID}/${basePageID}`}>
+              <button className="action blue" type="submit">
+                save
+              </button>
+            </Link>
           </form>
         </div>
       </div>
