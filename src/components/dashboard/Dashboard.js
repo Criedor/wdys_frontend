@@ -11,6 +11,7 @@ import ProjectCreate from "./projectCreate/ProjectCreate";
 import ProjectDetailsPageEdit from "./projectDetailsPageEdit/projectDetailsPageEdit";
 import ProjectDetails from "./projectDetails/ProjectDetails";
 import Projects from "./project/Projects";
+import Translation from "./translation/Translation";
 
 import "./Dashboard.css";
 
@@ -127,6 +128,15 @@ const Dashboard = () => {
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
                 <Projects {...props} />
+              </ThemeProvider>
+            )}
+          />
+          <Route
+            exact
+            path="/translation"
+            render={(props) => (
+              <ThemeProvider theme={inputTheme320}>
+                <Translation {...props} />
               </ThemeProvider>
             )}
           />
