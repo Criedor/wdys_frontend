@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Menu, MenuItem } from "@material-ui/core";
-import { Link, useRouteMatch, useParams } from "react-router-dom";
+import { Visibility } from "@material-ui/icons";
+import { Link, useRouteMatch } from "react-router-dom";
 import "../cards/Card.css";
 import "../tables/Tables.css";
 import "../Dashboard.css"
@@ -26,7 +26,7 @@ const Translation = () => {
         <div className="title-gray">
             Assigned Projects
         </div>
-        <div className="assigned-proj-TR header">
+        <div className="assigned-proj-TR header table-grid">
           <div>Page Name</div>
           <div>Status</div>
           <div>Assigned</div>
@@ -34,12 +34,14 @@ const Translation = () => {
           <div>View</div>
         </div>
         {rows.map((item) => (
-          <div className="assigned-proj-TR" key={item.pageName}>
+          <div className="assigned-proj-TR table-grid" key={item.pageName}>
             <div>{item.pageName}</div>
             <div>{item.status}</div>
             <div>{item.assigned}</div>
             <div>{item.due}</div>
-            <div>{item.view}</div>
+            <div className="center">
+              <Visibility />
+            </div>
           </div>
         ))}
       </div>
