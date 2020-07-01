@@ -12,6 +12,7 @@ import ProjectDetailsPageEdit from "./projectDetailsPageEdit/projectDetailsPageE
 import ProjectDetails from "./projectDetails/ProjectDetails";
 import Projects from "./project/Projects";
 import Translation from "./translation/Translation";
+import Compare from "./compare/Compare";
 
 import "./Dashboard.css";
 
@@ -104,6 +105,11 @@ const Dashboard = () => {
           />
 
           <Route
+            path="/translators/:userID/:pageID"
+            render={(props) => <Compare {...props} />}
+          />
+
+          <Route
             exact
             path="/projects/:projID"
             render={(props) => (
@@ -140,6 +146,11 @@ const Dashboard = () => {
               </ThemeProvider>
             )}
           />
+
+          <Route
+            path="/translation/:pageID"
+            render={(props) => <Compare {...props} />}
+          /> 
         </Switch>
       </div>
     </div>

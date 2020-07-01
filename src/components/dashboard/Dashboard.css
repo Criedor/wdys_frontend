@@ -26,6 +26,10 @@
     padding: 0.5em 1.875em;
 }
 
+.title-green {
+    background-color: #01C0AD;
+}
+
 .col-left-info {
     padding: 1.875em;
     width: 100%;
