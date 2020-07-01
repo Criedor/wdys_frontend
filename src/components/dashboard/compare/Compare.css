@@ -1,0 +1,16 @@
+.compare-txt{
+    display: grid;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    height: 80px;
+    padding: 0.5em 1em;
+}
+
+.mt1 {
+    margin-top: 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.white {
+    color: #ffffff;
+}
