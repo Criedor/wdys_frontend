@@ -6,10 +6,12 @@ import CrumbsAction from "./crumbsAction/CrumbsAction";
 import ProjectDetailsPage from "./projectDetailsPage/ProjectsDetailsPage";
 import TranslatorCreate from "./translatorCreate/TranslatorCreate";
 import TranslatorDetails from "./translatorDetail/TranslatorDetails";
-import ProjectEdit from "./projectEdit/ProjectEdit";
+import ProjectEdit from "./projectEdit/projectEdit";
 import ProjectCreate from "./projectCreate/ProjectCreate";
+import ProjectDetailsPageEdit from "./projectDetailsPageEdit/projectDetailsPageEdit";
 import ProjectDetails from "./projectDetails/ProjectDetails";
 import Projects from "./project/Projects";
+import Translation from "./translation/Translation";
 
 import "./Dashboard.css";
 
@@ -73,6 +75,16 @@ const Dashboard = () => {
 
           <Route
             exact
+            path="/projects/:projID/:basePageID/update"
+            render={(props) => (
+              <ThemeProvider theme={inputTheme320}>
+                <ProjectDetailsPageEdit {...props} />
+              </ThemeProvider>
+            )}
+          />
+
+          <Route
+            exact
             path="/projects/:projID/:basePageID"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
@@ -116,6 +128,15 @@ const Dashboard = () => {
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
                 <Projects {...props} />
+              </ThemeProvider>
+            )}
+          />
+          <Route
+            exact
+            path="/translation"
+            render={(props) => (
+              <ThemeProvider theme={inputTheme320}>
+                <Translation {...props} />
               </ThemeProvider>
             )}
           />

@@ -22,6 +22,10 @@
   text-align: center;
 }
 
+.assigned-proj-TR {
+    grid-template-columns: 6fr 2fr 4fr 3fr 1fr;
+}
+
 .header {
   background-color: #000;
   grid-template-rows: 50px;

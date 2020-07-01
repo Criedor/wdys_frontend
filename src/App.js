@@ -56,15 +56,21 @@ const App = () => {
         <GlobalCss />
         {modal ? <Modal /> : null}
         <Switch>
-          {/* Translator's section */}
+          {/* Translation Manager's Translators section */}
           <Route
             path="/translators"
             render={(props) => <Dashboard {...props} />}
           />
 
-          {/* Translation Manager's section */}
+          {/* Translation Manager's Projects section */}
           <Route
             path="/projects"
+            render={(props) => <Dashboard {...props} />}
+          />
+
+          {/* Translator's section */}
+          <Route
+            path="/translation"
             render={(props) => <Dashboard {...props} />}
           />
 

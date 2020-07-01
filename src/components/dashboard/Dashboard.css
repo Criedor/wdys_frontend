@@ -84,6 +84,14 @@ label {
     justify-content: center;
 }
 
+/* Grid for Translation.js */
+
+.body-translation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.875em;
+}
+
 .assign-button {
     height: 40px;
     width: 40px;
