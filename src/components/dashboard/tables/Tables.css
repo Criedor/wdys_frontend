@@ -11,6 +11,15 @@
     padding: 0 1em;
 }
 
+.assigned-proj-TR {
+    display: grid;
+    grid-template-columns: 6fr 2fr 4fr 3fr 1fr;
+    grid-template-rows: 80px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    align-items: center;
+    padding: 0 1em;
+}
+
 .header {
     background-color: #000;
     grid-template-rows: 50px;
