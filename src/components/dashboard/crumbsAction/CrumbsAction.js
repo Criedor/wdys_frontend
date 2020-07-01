@@ -8,6 +8,7 @@ const CrumbsAction = () => {
   let matchProjectUpdate = useRouteMatch("/projects/:projID/update");
   let matchTranslatorCreate = useRouteMatch("/translators/create");
   let matchProjectCreate = useRouteMatch("/projects/create");
+  let matchTranslatorCompare = useRouteMatch("/translators/:userID/:pageID");
   let matchTranslator = useRouteMatch("/translators");
   let matchTranslation = useRouteMatch("/translation");
   let matchProjects = useRouteMatch("/projects");
@@ -22,11 +23,15 @@ const CrumbsAction = () => {
 
   return (
     <div className="body-head">
-      {matchProjectCreate || matchTranslatorCreate || matchTranslation? null : (
+      {matchProjectCreate ||
+      matchTranslatorCreate ||
+      matchTranslation ? null : (
         <>
           <Breadcrumbs />
           <Link to={handleAddButtonLink} style={{ textDecoration: "none" }}>
-            {matchProjectUpdate || matchProjectPage ? null : (
+            {matchProjectUpdate ||
+            matchProjectPage ||
+            matchTranslatorCompare ? null : (
               <div className="add-button">+</div>
             )}
           </Link>
