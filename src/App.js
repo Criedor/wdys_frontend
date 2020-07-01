@@ -67,7 +67,7 @@ const App = () => {
             path="/projects"
             render={(props) => <Dashboard {...props} />}
           />
-
+          
           {/* Translator's section */}
           <Route
             path="/translation"
