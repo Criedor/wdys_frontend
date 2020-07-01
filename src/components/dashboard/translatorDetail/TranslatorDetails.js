@@ -3,6 +3,7 @@ import ModalContext from "../../../contexts/ModalContext";
 // import { useParams } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
+import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
 import "../Dashboard.css";
 
 const TranslatorDetails = () => {
@@ -52,12 +53,19 @@ const TranslatorDetails = () => {
 
           <div className="field-wrapper w-320">
             <label>Translation Language(s) </label>
-            <div className="custom-result"> German, French </div>
+            <div className="custom-result">
+              English, French, German, Italian
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="title-gray">Assigned pages</div>
+      <div className="column-right">
+        <div className="title-gray">Assigned pages</div>
+        <div>
+          <AssignedTranslatorsTM />
+        </div>
+      </div>
     </div>
   );
 };
