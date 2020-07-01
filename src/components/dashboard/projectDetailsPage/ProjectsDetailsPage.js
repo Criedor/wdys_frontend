@@ -17,7 +17,7 @@ const ProjectDetailsPage = () => {
     <div className="body-project-details">
       <div className="col-left-380">
         <div className="title-gray">
-          Page Name
+          Page Name (Homepage)
           <Button
             aria-controls="fade-menu"
             aria-haspopup="true"
@@ -34,7 +34,13 @@ const ProjectDetailsPage = () => {
             onClose={(e) => setAnchorEl(false)}
           >
             <Link to={`${match.url}/update`}>
-              <MenuItem>Edit</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setAnchorEl(false);
+                }}
+              >
+                Edit
+              </MenuItem>
             </Link>
             <MenuItem
               onClick={() => {
