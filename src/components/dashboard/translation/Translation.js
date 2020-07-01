@@ -48,11 +48,11 @@ const Translation = () => {
             Page Details
         </div>
         <div className="card-translation ">
-          <div className="card-top green">
+          <div className="card-top green-bg">
              Page Name
           </div>
           <div className="card-bottom ">
-            <div className="page-info">
+            <div className="page-info mt0">
               Translate form:<strong> BASELANG</strong>
             </div>
             <div className="page-info">
@@ -65,7 +65,7 @@ const Translation = () => {
               Due by: <strong>DATE DATE </strong>
             </div>
             <div className="page-info">
-              Link: <a className="page-info-link" href="DATA:PAGE_URL" alt="GIVE ME A NAME"><strong> PAGE URL</strong></a>
+              Link: <a className="green" href="DATA:PAGE_URL" alt="GIVE ME A NAME"><strong> PAGE URL</strong></a>
             </div>
             <div className="page-info">
               Status: <strong>STATUS</strong>
@@ -74,7 +74,7 @@ const Translation = () => {
               Descritpion
               <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
             </div>
-            <div className="translation-button">
+            <div className="center">
               <Link to={`${useRouteMatch().url}/${"TRANSLATIONPAGE_ID"}`}>
                 <button className="blue action ">REVIEW</button>
               </Link>

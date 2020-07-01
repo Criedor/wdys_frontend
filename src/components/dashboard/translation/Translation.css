@@ -1,15 +1,11 @@
-.green {
+.green-bg {
     background-color: #01C0AD;
-}
-
-.translation-button {
-    text-align: center;
 }
 
 .page-info {
     margin: 1em 0;
 }
 
-.page-info-link {
-    color: #01C0AD;
+.mt0 {
+    margin-top: 0;
 }
