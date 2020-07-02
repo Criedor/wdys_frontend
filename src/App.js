@@ -6,6 +6,7 @@ import Entry from "./components/Entry";
 import Modal from "./components/modal/Modal";
 import Dashboard from "./components/dashboard/Dashboard";
 import ModalContext from "./contexts/ModalContext";
+import UserContext from "./contexts/UserContext";
 import "./components/dashboard/Dashboard";
 import "./App.css";
 
@@ -32,6 +33,9 @@ const App = () => {
   // State for opening modal Login / Signup
   const [modal, setModal] = useState(null);
   const [modalOption, setModalOption] = useState(1);
+  const [userId, setUserId] = useState();
+  const [role, setRole] = useState();
+  const [userName, setUserName] = useState();
 
   // State to Open/Close the Edit/Delete popover menu
   const [anchorEl, setAnchorEl] = useState(null);
@@ -52,6 +56,9 @@ const App = () => {
           open,
         }}
       >
+      <UserContext.Provider
+      value={{
+        role, setRole, userId, setUserId,userName, setUserName}}>
         <Navigation />
         <GlobalCss />
         {modal ? <Modal /> : null}
@@ -82,6 +89,7 @@ const App = () => {
             render={(props) => <Entry {...props} />}
           ></Route>
         </Switch>
+      </UserContext.Provider>
       </ModalContext.Provider>
     </div>
   );
