@@ -1,28 +1,32 @@
 import React, { useContext } from "react";
 import ModalContext from "../../contexts/ModalContext";
+import UserContext from "../../contexts/UserContext"
 import "./Modal.css";
 import Axios from "axios";
 import Cookies from "js-cookie";
 
-const login = (e) => {
-  e.preventDefault();
-  console.log(e.currentTarget);
-  Axios.put("https://wdys.herokuapp.com/login", {
-    email: `${e.currentTarget[2]}`,
-    password: `${e.currentTarget[4]}`,
-  }).then((res) => {
-    console.log(res);
-    Cookies.set("token", res.headers["x-token"]);
-  });
-  console.log(Cookies.token);
-};
-
-// e.preventDefault()
-// Axios.post("https://pokefight-wbs.herokuapp.com/auth/login%22,%60%7Bemail:%22$%7Be.target[0].value%7D%60,password:%60$%7Be.target[1].value%7D%60%7D)
-// .then((res)=> {console.log(res.headers['x-auth-token']); Cookies.set('token', res.headers['x-auth-token'])})
 
 const Login = () => {
   const { setModal, setModalOption } = useContext(ModalContext);
+  const { setUserId, setUserName, setRole } = useContext(UserContext);
+
+  const login = (e) => {
+    e.preventDefault();
+  
+    Axios.put("http://localhost:3000/login", {
+      email: `${e.currentTarget[0].value}`,
+      password: `${e.currentTarget[1].value}`,
+    })
+    .then((res) => {
+      Cookies.set("token", res.data.token); 
+      Cookies.set("role", res.data.role);
+      setUserId(res.data.user_id);
+      setUserName(res.data.displayname);
+      setRole(res.data.role)});
+      history.push('/')
+    };
+
+
 
   return (
     <>
