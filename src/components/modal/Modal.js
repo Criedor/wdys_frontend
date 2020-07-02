@@ -17,7 +17,7 @@ const Modal = () => {
     }
   };
 
-  console.log({ theOption: modalOption });
+  // console.log({ theOption: modalOption });
   return (
     <div className="modal">
       <div className="modal-wrapper">

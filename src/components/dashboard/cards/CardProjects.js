@@ -3,12 +3,16 @@ import ModalContext from "../../../contexts/ModalContext";
 import { Link, useRouteMatch, useParams } from "react-router-dom";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import MoreVert from "@material-ui/icons/MoreVert";
+import UserContext from "../../../contexts/UserContext";
 import "./Card.css";
 
 const Card = () => {
   const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
     ModalContext
   );
+
+  const { userId, setUserProjects, userProjects, setLangs } = useContext(UserContext);
+// console.log(typeof userId)
 
   // const variable to for the MUI Edit/Delete
   // const open = Boolean(anchorEl);

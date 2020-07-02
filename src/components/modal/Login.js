@@ -1,49 +1,51 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import ModalContext from "../../contexts/ModalContext";
-import { LoginCall } from "../../Controllers/ApiController";
-// import UserContext from "../../contexts/UserContext";
+import UserContext from "../../contexts/UserContext";
+import Axios from "axios";
+import Cookies from "js-cookie";
 import "./Modal.css";
 
 const Login = () => {
   const { setModal, setModalOption } = useContext(ModalContext);
-  // const { setUserId, setUserName, setRole } = useContext(UserContext);
+  const { setUserId, setUserName, setRole } = useContext(UserContext);
 
-  // let history = useHistory();
+  let history = useHistory();
 
-  // const login = (e) => {
-  //   e.preventDefault();
+  const login = (e) => {
+    e.preventDefault();
 
-  //   Axios.put("https://wdys.herokuapp.com/login", {
-  //     email: `${e.currentTarget[0].value}`,
-  //     password: `${e.currentTarget[1].value}`,
-  //   })
-  //     .then((res) => {
-  //       Cookies.set("token", res.data.token);
-  //       Cookies.set("role", res.data.role);
-  //       setUserId(res.data.user_id);
-  //       setUserName(res.data.displayname);
-  //       setRole(res.data.role);
-  //       return res.data.role;
-  //     })
-  //     .then((res) => {
-  //       switch (res) {
-  //         case "0":
-  //           history.push("/projects");
-  //           break;
-  //         case "1":
-  //           history.push("/translation");
-  //           break;
-  //         default:
-  //           history.push("/error");
-  //       }
-  //       setModal(0);
-  //     });
-  // };
+    Axios.put("https://wdys.herokuapp.com/login", {
+      email: `${e.currentTarget[0].value}`,
+      password: `${e.currentTarget[1].value}`,
+    })
+      .then((res) => {
+        Cookies.set("token", res.data.token);
+        Cookies.set("role", res.data.role);
+        setUserId(res.data.user_id);
+        setUserName(res.data.displayname);
+        setRole(res.data.role);
+        return res.data.role;
+      })
+      .then((res) => {
+        switch (res) {
+          case "0":
+            history.push("/projects");
+            break;
+          case "1":
+            history.push("/translation");
+            break;
+          default:
+            history.push("/error");
+        }
+        setModal(0);
+      });
+  };
 
   return (
     <>
       <div className="login-body">
-        <form onSubmit={(e) => LoginCall(e)}>
+        <form onSubmit={(e) => login(e)}>
           <h2>Login </h2>
 
           <label> Email:</label>

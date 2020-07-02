@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Switch, Route } from "react-router-dom";
-import ModalContext from "./contexts/ModalContext";
+// import ModalContext from "./contexts/ModalContext";
 import Dashboard from "./components/dashboard/Dashboard";
 import "./components/dashboard/Dashboard";
 
 const Protected = () => {
-  const { modal } = useContext(ModalContext);
+//   const { modal } = useContext(ModalContext);
 
   return (
     <>

@@ -18,6 +18,8 @@ const App = () => {
   const [userId, setUserId] = useState();
   const [role, setRole] = useState();
   const [userName, setUserName] = useState();
+  const [userProjects, setUserProjects] = useState();
+  const [langs, setLangs] = useState();
 
   // State to Open/Close the Edit/Delete popover menu
   const [anchorEl, setAnchorEl] = useState(null);
@@ -65,6 +67,8 @@ const App = () => {
             setUserId,
             userName,
             setUserName,
+            setUserProjects, 
+            setLangs,
           }}
         >
           <Navigation />

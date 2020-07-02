@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Sidebar from "./sidebar/Sidebar";
@@ -14,6 +14,7 @@ import Projects from "./project/Projects";
 import Translation from "./translation/Translation";
 import Compare from "./compare/Compare";
 import UserContext from "../../contexts/UserContext";
+import Axios from "axios";
 
 import "./Dashboard.css";
 
@@ -38,8 +39,25 @@ const inputTheme500 = createMuiTheme({
   },
 });
 
+
+
 const Dashboard = () => {
-  const { userId, setUserName, setRole } = useContext(UserContext);
+
+const { userId, setUserProjects, setLangs } = useContext(UserContext);
+// console.log(typeof userId)
+  
+  useEffect(() => {
+    let url = `https://wdys.herokuapp.com/initial/${userId}`
+    Axios
+    .get(url, {headers: {'Content-Type':'application/json'}})
+    .then((res) => { console.log(res);
+      
+      setLangs(res.data.languages);
+      setUserProjects(res.data.userprojects);
+      console.log(res.data.userprojects)
+    })
+    .catch((err) => console.log(err))
+  }, [userId]);
 
   return (
     <div className="dashboard">
