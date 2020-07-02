@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Sidebar from "./sidebar/Sidebar";
@@ -13,6 +13,7 @@ import ProjectDetails from "./projectDetails/ProjectDetails";
 import Projects from "./project/Projects";
 import Translation from "./translation/Translation";
 import Compare from "./compare/Compare";
+import UserContext from "../../contexts/UserContext";
 
 import "./Dashboard.css";
 
@@ -38,6 +39,8 @@ const inputTheme500 = createMuiTheme({
 });
 
 const Dashboard = () => {
+  const { userId, setUserName, setRole } = useContext(UserContext);
+
   return (
     <div className="dashboard">
       <Sidebar />
@@ -150,7 +153,7 @@ const Dashboard = () => {
           <Route
             path="/translation/:pageID"
             render={(props) => <Compare {...props} />}
-          /> 
+          />
         </Switch>
       </div>
     </div>

@@ -7,7 +7,7 @@ const Project = () => {
   const matchTranslatorsRoute = useRouteMatch({
     path: "/projects",
   });
-  console.log(matchTranslatorsRoute);
+  // console.log(matchTranslatorsRoute);
   return (
     <div className="body-project">
       {matchTranslatorsRoute ? <CardProjects /> : <CardTranslators />}

@@ -1,37 +1,49 @@
 import React, { useContext } from "react";
 import ModalContext from "../../contexts/ModalContext";
-import UserContext from "../../contexts/UserContext"
+import { LoginCall } from "../../Controllers/ApiController";
+// import UserContext from "../../contexts/UserContext";
 import "./Modal.css";
-import Axios from "axios";
-import Cookies from "js-cookie";
-
 
 const Login = () => {
   const { setModal, setModalOption } = useContext(ModalContext);
-  const { setUserId, setUserName, setRole } = useContext(UserContext);
+  // const { setUserId, setUserName, setRole } = useContext(UserContext);
 
-  const login = (e) => {
-    e.preventDefault();
-  
-    Axios.put("http://localhost:3000/login", {
-      email: `${e.currentTarget[0].value}`,
-      password: `${e.currentTarget[1].value}`,
-    })
-    .then((res) => {
-      Cookies.set("token", res.data.token); 
-      Cookies.set("role", res.data.role);
-      setUserId(res.data.user_id);
-      setUserName(res.data.displayname);
-      setRole(res.data.role)});
-      history.push('/')
-    };
+  // let history = useHistory();
 
+  // const login = (e) => {
+  //   e.preventDefault();
 
+  //   Axios.put("https://wdys.herokuapp.com/login", {
+  //     email: `${e.currentTarget[0].value}`,
+  //     password: `${e.currentTarget[1].value}`,
+  //   })
+  //     .then((res) => {
+  //       Cookies.set("token", res.data.token);
+  //       Cookies.set("role", res.data.role);
+  //       setUserId(res.data.user_id);
+  //       setUserName(res.data.displayname);
+  //       setRole(res.data.role);
+  //       return res.data.role;
+  //     })
+  //     .then((res) => {
+  //       switch (res) {
+  //         case "0":
+  //           history.push("/projects");
+  //           break;
+  //         case "1":
+  //           history.push("/translation");
+  //           break;
+  //         default:
+  //           history.push("/error");
+  //       }
+  //       setModal(0);
+  //     });
+  // };
 
   return (
     <>
       <div className="login-body">
-        <form onSubmit={(e) => login(e)}>
+        <form onSubmit={(e) => LoginCall(e)}>
           <h2>Login </h2>
 
           <label> Email:</label>
