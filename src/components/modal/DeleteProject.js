@@ -1,10 +1,26 @@
 import React, { useContext } from "react";
 import ModalContext from "../../contexts/ModalContext";
+import UserContext from "../../contexts/UserContext";
+import Axios from 'axios'
 import { Delete } from "@material-ui/icons";
 import "./Modal.css";
 
 const DeleteProject = () => {
-  const { setModal, setModalOption } = useContext(ModalContext);
+  const { setModal, setModalOption, modalObject } = useContext(ModalContext);
+  const { userId, projectCounter, setProjectCounter } = useContext(UserContext);
+
+  const deleteCall = (e)=>{
+    e.preventDefault()
+    Axios
+      .delete(`https://wdys.herokuapp.com/projects/delete`,{data: {"project_id": modalObject, "owner_id": userId}})
+      .then((res) => { 
+        setModal(0);
+        setModalOption(1);
+        setProjectCounter(projectCounter-1)
+      })
+      .catch((err) => console.log(err))
+  }
+
 
   return (
     <>
@@ -18,7 +34,7 @@ const DeleteProject = () => {
             Are you sure you want to delete the project?
           </p>
           <div className="flex-inline">
-            <button className="action danger w205">Delete</button>
+            <button className="action danger w205" onClick={(e)=>deleteCall(e)}>Delete</button>
             <button
               className="action blue w205"
               onClick={() => {

@@ -49,7 +49,7 @@ const Login = () => {
           <h2>Login </h2>
 
           <label> Email:</label>
-          <input type="text" name="name" placeholder="your-email@example.com" />
+          <input autofocus type="text" name="name" placeholder="your-email@example.com" />
 
           <label> Password:</label>
           <input type="password" name="password" />

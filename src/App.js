@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/navigation/Navigation";
 import Entry from "./components/Entry";
@@ -8,6 +8,7 @@ import Modal from "./components/modal/Modal";
 import ModalContext from "./contexts/ModalContext";
 import UserContext from "./contexts/UserContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Axios from "axios";
 import "./components/dashboard/Dashboard";
 import "./App.css";
 
@@ -15,11 +16,13 @@ const App = () => {
   // State for opening modal Login / Signup
   const [modal, setModal] = useState(null);
   const [modalOption, setModalOption] = useState(1);
+  const [modalObject, setModalObject] = useState();
   const [userId, setUserId] = useState();
   const [role, setRole] = useState();
   const [userName, setUserName] = useState();
-  const [userProjects, setUserProjects] = useState();
-  const [langs, setLangs] = useState();
+  const [userProjects, setUserProjects] = useState([]);
+  const [langs, setLangs] = useState([{lang: "ger", langname: "German"}]);
+  const [projectCounter, setProjectCounter] = useState();
 
   // State to Open/Close the Edit/Delete popover menu
   const [anchorEl, setAnchorEl] = useState(null);
@@ -46,6 +49,19 @@ const App = () => {
     },
   })(() => null);
 
+  useEffect(() => {
+    if(langs.length <=1){
+      Axios
+      .get("https://wdys.herokuapp.com/languages", {headers: {'Content-Type':'application/json'}})
+      .then((res) => {
+        setLangs(res.data.languages);
+      })
+      .catch((err) => console.log(err))
+    }
+  }, [langs]);
+
+
+
   return (
     <div className="App">
       <ModalContext.Provider
@@ -57,6 +73,8 @@ const App = () => {
           anchorEl,
           setAnchorEl,
           open,
+          modalObject, 
+          setModalObject
         }}
       >
         <UserContext.Provider
@@ -67,8 +85,12 @@ const App = () => {
             setUserId,
             userName,
             setUserName,
+            userProjects,
             setUserProjects, 
+            langs,
             setLangs,
+            projectCounter,
+            setProjectCounter
           }}
         >
           <Navigation />

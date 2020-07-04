@@ -43,21 +43,19 @@ const inputTheme500 = createMuiTheme({
 
 const Dashboard = () => {
 
-const { userId, setUserProjects, setLangs } = useContext(UserContext);
-// console.log(typeof userId)
-  
+const { userId, setUserProjects, projectCounter, setProjectCounter } = useContext(UserContext);
+
+ 
   useEffect(() => {
     let url = `https://wdys.herokuapp.com/initial/${userId}`
     Axios
     .get(url, {headers: {'Content-Type':'application/json'}})
-    .then((res) => { console.log(res);
-      
-      setLangs(res.data.languages);
+    .then((res) => { 
       setUserProjects(res.data.userprojects);
-      console.log(res.data.userprojects)
+      setProjectCounter(res.data.userprojects.length)
     })
     .catch((err) => console.log(err))
-  }, [userId]);
+  }, [userId, projectCounter]);
 
   return (
     <div className="dashboard">

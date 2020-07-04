@@ -2,9 +2,8 @@
     display: grid;
     grid-column: 1 / span 3;
     grid-template-columns: minmax(230px, 1fr) minmax(280px, 1140px) 1fr;
-    grid-template-rows: 100vh;
     padding-top: 5em;
-}
+    }
 
 .dashboard-body {
     display: grid;

@@ -1,27 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { MenuItem, Select, FormControl } from "@material-ui/core";
+import UserContext from '../../../contexts/UserContext'
 
-const lang = [
-  "Dutch",
-  "English",
-  "French",
-  "German",
-  "Italian",
-  "Portuguese",
-  "Xhosa",
-  "Zulu",
-];
 
 const SelectField = ({ id }) => {
-  // console.log({selectField: id})
-
-  const [languages, setLanguages] = useState(["Select a base language"]);
-
-  console.log(languages);
-
-  const handleChange = (event) => {
-    setLanguages(event.target.value);
-  };
+  const {langs} = useContext(UserContext)
 
   return (
     <>
@@ -30,15 +13,11 @@ const SelectField = ({ id }) => {
           labelId={id}
           id={id}
           autoComplete="true"
-          defaultValue={lang[1]}
-          onChange={handleChange}
-          // displayEmpty
-          // displayEmpty='true'
-          //   input={<Input />}
+          defaultValue={langs[0].langname}
         >
-          {lang.map((name) => (
-            <MenuItem key={name} value={name}>
-              {name}
+          {langs.map((name) => (
+            <MenuItem key={name.lang} value={name.langname}>
+              {name.langname}
             </MenuItem>
           ))}
         </Select>
