@@ -1,7 +1,7 @@
 import React, {useState, useContext} from "react";
 import { useHistory } from "react-router-dom";
 import SelectField from "../selectFields/SelectField";
-import SelectAutocomplete from "../selectFields/SelectAutocompleteEdit";
+import SelectAutocomplete from "../selectFields/SelectAutocomplete";
 import DatePicker from "../selectFields/DatePicker";
 import "../Dashboard.css";
 import Axios from 'axios'
@@ -12,10 +12,9 @@ import UserContext from "../../../contexts/UserContext";
 const ProjectCreate = () => {
   const history = useHistory()
   const {userId, setProjectCounter, projectCounter} = useContext(UserContext)
-  const [selectedLangs, setSelectedLangs] = useState(["German"])
+  const [selectedLangs, setSelectedLangs] = useState()
   
   const getLangs = (LangsInput) => {
-    console.log(LangsInput)
     setSelectedLangs(LangsInput)
   }
 
@@ -23,7 +22,7 @@ const ProjectCreate = () => {
     e.preventDefault()
 
     Axios
-      .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline":e.target[5].value, "owner_id": userId})
+      .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline":e.target[4].value, "owner_id": userId})
       .then((res) => { 
           setProjectCounter(projectCounter+1)
           history.push("/projects")

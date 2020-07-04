@@ -1,36 +1,49 @@
 import React, {useContext, useEffect, useState} from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import SelectAutocompleteEdit from "../selectFields/SelectAutocompleteEdit";
 import DatePickerEdit from "../selectFields/DatePickerEdit";
 import { FormControl } from "@material-ui/core";
 import ProjectPagesTM from "../tables/ProjectPagesTM";
 import UserContext from '../../../contexts/UserContext'
+import Axios from 'axios'
 import "../Dashboard.css";
 
 const ProjectEdit = () => {
-  const { userProjects, langs } = useContext(UserContext);
+  const { userProjects, userId } = useContext(UserContext);
   const [project, setProject] = useState();
-  const projectId = useRouteMatch({
-    path: "/projects/:projID/update",
-  });
+  const [selectedLangs, setSelectedLangs] = useState()
+  const projectId = useRouteMatch({path: "/projects/:projID/update",});
+  const history = useHistory()
+  const match = useRouteMatch();
 
-  const [selectedLangs, setSelectedLangs] = useState(["German"])
-  
-  const getLangs = (LangsInput) => {
-  setSelectedLangs(LangsInput)
+ 
+  const getLangs = (l) => {
+  setSelectedLangs(l)
   }
 
+
   useEffect(()=>{
-      setProject(userProjects.filter(project => project._id === projectId.params.projID)[0])
+    setProject(userProjects.filter(project => project._id === projectId.params.projID)[0])
   },[userProjects])
 
 
   const handleUpdateProjForm = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget[0].value)
-    console.log(selectedLangs)
-    console.log(e.currentTarget[4].value)
+    let changeProjectName
+    let changeProjectLangs
+    if (selectedLangs) {changeProjectLangs = selectedLangs}
+    else {changeProjectLangs = project.langs}
 
+    if (e.currentTarget[0].value) {changeProjectName = e.currentTarget[0].value}
+    else changeProjectName = project.projectname
+    
+    Axios
+    .put(`http://wdys.herokuapp.com/projects/${match.params.projID}/update`, {user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: e.currentTarget[4].value })
+    .then((res) => { 
+      console.log(res)
+      history.push(`/projects/${project._id}`)
+    })
+    .catch((err) => console.log(err))
 
 
 

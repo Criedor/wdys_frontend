@@ -1,9 +1,10 @@
 /* eslint-disable no-use-before-define */
-import React from 'react';
+import React, {useContext} from 'react';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
+import UserContext from '../../../contexts/UserContext'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const SelectAutocomplete = ({ id }) => {
+const SelectAutocomplete = ({ id, getLangs}) => {
+  const {langs} = useContext(UserContext)
   const classes = useStyles();
   // console.log({selectAutocomplete: id})
 
@@ -24,9 +26,10 @@ const SelectAutocomplete = ({ id }) => {
       <Autocomplete
         multiple
         id={id}
-        options={languages.map((option) => option.lang)}
-        defaultValue={[languages[1].lang]}
+        options={langs.map((option) => option.langname)}
+        defaultValue={[langs[1].langname]}
         freeSolo
+        onChange={(e,l)=>{getLangs(l)}}
         renderTags={(value, getTagProps) =>
           value.map((option, index) => (
             <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })} />

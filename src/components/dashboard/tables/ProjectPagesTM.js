@@ -1,9 +1,12 @@
 import React from "react";
+import {Link, useParams} from 'react-router-dom'
 import { Visibility } from "@material-ui/icons";
 import "../tables/Tables.css";
 var uniqid = require('uniqid');
 
 const ProjectPagesTM = ( {projectpages}) => {
+
+  const { projID } = useParams();
   return (
     <>
       <div className="project-pages-TM table-grid header">
@@ -17,7 +20,9 @@ const ProjectPagesTM = ( {projectpages}) => {
           <div>{page.pagename}</div>
           <div>{page.description}</div>
           <div className="center">
-            <Visibility />
+            <Link to={`${projID}/${page._id}`}>
+              <Visibility />
+            </Link>
           </div>
         </div>
       ))}

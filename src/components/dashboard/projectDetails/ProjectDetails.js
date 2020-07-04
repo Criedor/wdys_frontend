@@ -10,11 +10,13 @@ import Axios from 'axios'
 import "../Dashboard.css";
 
 const ProjectDetails = () => {
-  const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(ModalContext);
+  const { setModal, setModalOption } = useContext(ModalContext);
   const { userId } = useContext(UserContext);
   const { projID } = useParams();
   const [projectdata, setProjectdata] = useState();
   const [projectpages, setProjectPages] = useState()
+  const [anchorEl, setAnchorEl] = useState()
+  const open = Boolean(anchorEl);
 
   useEffect(() => {
     Axios

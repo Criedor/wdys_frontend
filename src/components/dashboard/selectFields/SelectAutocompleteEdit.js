@@ -27,10 +27,9 @@ const SelectAutocompleteEdit = ({ id, getLangs, projectlangs }) => {
         multiple
         id={id}
         options={langs.map((option) => option.langname)}
-        value={!projectlangs?[langs[0].langname]:projectlangs}
-        defaultValue={!projectlangs?[langs[0].langname]:projectlangs}
+        defaultValue={projectlangs}
         freeSolo={false}
-        onChange={(e,l)=>{console.log([l]);getLangs(l)}}
+        onChange={(e,l)=>{;getLangs(l)}}
         renderTags={(value, getTagProps) =>
           value.map((option, index) =>  
             <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })}/>
