@@ -37,9 +37,6 @@ const ProjectDetailsPage = () => {
   }, []);
 
 
-
-
-
   return (
     <>
     {basePage &&  baseProject && translators && translationPages &&
@@ -62,7 +59,7 @@ const ProjectDetailsPage = () => {
             open={open}
             onClose={(e) => setAnchorEl(false)}
           >
-            <Link to={`/update`}>
+            <Link to={`/projects/${projID.params.projID}/${basePageID.params.basePageID}/update`}>
               <MenuItem
                 onClick={() => {
                   setAnchorEl(false);

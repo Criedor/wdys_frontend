@@ -1,29 +1,56 @@
-import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { FormControl } from "@material-ui/core";
+import React, { useContext, useState, useEffect } from "react";
 import ModalContext from "../../../contexts/ModalContext";
-import { Link } from "react-router-dom";
+import UserContext from "../../../contexts/UserContext";
+import { Link, useRouteMatch, useHistory } from "react-router-dom";
+import { FormControl } from "@material-ui/core";
 import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
+import Axios from 'axios'
 import "../Dashboard.css";
 
 const ProjectDetailsPageEdit = () => {
-  let { projID, basePageID } = useParams();
+  const { setModal, setModalOption} = useContext(ModalContext);
+  const { userId } = useContext(UserContext);
+  const projID = useRouteMatch("/projects/:projID/:basePageID");
+  const basePageID = useRouteMatch("/projects/:projID/:basePageID")
+  const [basePage, setBasePage] = useState()
+  const [translationPages, setTranslationPages] = useState()
+  const [translators, setTranslators] = useState()
+  const [baseProject, setBaseProject] = useState()
+  const history = useHistory()
 
-  console.log({ projID: projID });
-
-  console.log({ basePageID: basePageID });
-
-  const handleCreateProjForm = (e) => {
+  const handleEditProjForm = (e) => {
     e.preventDefault();
+    Axios
+    .put(`https://wdys.herokuapp.com/projects/${projID.params.projID}/${userId}/${basePageID.params.basePageID}/edit`,{pagename: e.currentTarget[0].value, description: e.currentTarget[1].value })
+    .then((res) => { 
+      history.push(`./`)
+    })
+    .catch((err) => console.log(err))
   };
-  const { setModal, setModalOption } = useContext(ModalContext);
+
+  
+  useEffect(() => {
+   
+    Axios
+    .get(`https://wdys.herokuapp.com/projects/${projID.params.projID}/${userId}/${basePageID.params.basePageID}`)
+    .then((res) => { 
+      console.log(res);
+      setBasePage(res.data.basepage);
+      setTranslators(res.data.translators);
+      setTranslationPages(res.data.translationpage)
+      setBaseProject(res.data.baseproject)
+    })
+    .catch((err) => console.log(err))
+  }, []);
 
   return (
+    <>
+    {basePage &&  baseProject && translators && translationPages &&
     <div className="body-project-details">
       <div className="col-left-380">
-        <div className="title-gray">Page Name</div>
+        <div className="title-gray">{basePage.pagename}</div>
         <div className="col-left-info">
-          <form onSubmit={handleCreateProjForm}>
+          <form onSubmit={(e)=>handleEditProjForm(e)}>
             <FormControl>
               <div className="field-wrapper">
                 <label htmlFor="proj-details-page-name">Page Name </label>
@@ -31,7 +58,7 @@ const ProjectDetailsPageEdit = () => {
                   id="proj-details-page-name"
                   className="custom-input"
                   type="text"
-                  placeholder="Assign a page name"
+                  defaultValue={basePage.pagename}
                 />
               </div>
             </FormControl>
@@ -44,7 +71,7 @@ const ProjectDetailsPageEdit = () => {
                   id="proj-details-page-description"
                   className="custom-input"
                   type="text"
-                  placeholder="Add information about the page"
+                  defaultValue={basePage.description}
                 />
               </div>
             </FormControl>
@@ -52,22 +79,20 @@ const ProjectDetailsPageEdit = () => {
               <div className="field-wrapper">
                 <label htmlFor={"proj-details-page-deadline"}>Deadline </label>
                 <div className="field-wrapper">
-                  <div className="custom-result"> 11/07/2020 </div>
+                  <div className="custom-result"> {baseProject.deadline} </div>
                 </div>
               </div>
             </FormControl>
-            <Link to={`/projects/${projID}/${basePageID}`}>
-              <button className="action blue" type="submit">
+            <button className="action blue" type="submit">
                 save
-              </button>
-            </Link>
+            </button>
           </form>
         </div>
       </div>
       <div className="column-right">
         <div className="title-gray">
           Translators
-          <Link
+          <Link to=""
             onClick={() => {
               setModal(1);
               setModalOption(5);
@@ -77,10 +102,12 @@ const ProjectDetailsPageEdit = () => {
           </Link>
         </div>
         <div>
-          <AssignedTranslatorsTM />
+        {/* <AssignedTranslatorsTM translators={translators} translationpages={translationPages}/> */}
         </div>
       </div>
     </div>
+  }
+  </>
   );
 };
 
