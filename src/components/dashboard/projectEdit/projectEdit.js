@@ -24,7 +24,7 @@ const ProjectEdit = () => {
 
   useEffect(()=>{
     setProject(userProjects.filter(project => project._id === projectId.params.projID)[0])
-  },[userProjects])
+  },[projectId.params.projID, userProjects])
 
 
   const handleUpdateProjForm = (e) => {

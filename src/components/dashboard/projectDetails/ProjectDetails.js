@@ -81,7 +81,7 @@ const ProjectDetails = () => {
 
           <div className="field-wrapper w-320">
             <label>Translation Language(s) </label>
-            <div className="custom-result"> {projectdata.langs.join(". ")} </div>
+            <div className="custom-result"> {projectdata.langs.join(", ")} </div>
           </div>
 
           <div className="field-wrapper">

@@ -28,7 +28,7 @@ const Modal = () => {
                 setModal(0);
                 setModalOption(1);
               }}
-              style={{ cursor: "pointer", color: "#ffffff" }}
+              style={modalOption>=3?{ cursor: "pointer", color: "#000000" }:{ cursor: "pointer", color: "#ffffff" }}
             />
           </div>
 

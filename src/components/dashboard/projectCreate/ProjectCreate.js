@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import { useHistory } from "react-router-dom";
-import SelectField from "../selectFields/SelectField";
+import SelectField from "../selectFields/SelectFieldTranslationPages";
 import SelectAutocomplete from "../selectFields/SelectAutocomplete";
 import DatePicker from "../selectFields/DatePicker";
 import "../Dashboard.css";

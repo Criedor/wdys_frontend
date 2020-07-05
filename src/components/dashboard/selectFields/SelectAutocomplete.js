@@ -14,12 +14,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const SelectAutocomplete = ({ id, getLangs}) => {
   const {langs} = useContext(UserContext)
   const classes = useStyles();
-  // console.log({selectAutocomplete: id})
-
+  
   return (
     
     <div className={classes.root}>
@@ -44,15 +42,5 @@ const SelectAutocomplete = ({ id, getLangs}) => {
   );
 }
 
-const languages = [
-    {lang:'Dutch'},
-    {lang:'English'},
-    {lang:'French'},
-    {lang:'German'},
-    {lang:'Italian'},
-    {lang:'Portuguese'},
-    {lang:'Xhosa'},
-    {lang:'Zulu'},
-];
 
 export default SelectAutocomplete
