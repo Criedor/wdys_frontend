@@ -21,7 +21,6 @@ const ProjectCreate = () => {
 
   const create = (e)=>{
     e.preventDefault()
-
     Axios
       .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline":e.target[4].value, "owner_id": userId})
       .then((res) => { 

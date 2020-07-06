@@ -21,7 +21,7 @@ const TranslatorCreate = () => {
           </div>
 
           <div className="field-wrapper">
-            <label htmlFor="trans-create-email">Name *</label>
+            <label htmlFor="trans-create-email">Email *</label>
             <input
               id="trans-create-email"
               className="custom-input"
