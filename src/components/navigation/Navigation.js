@@ -15,14 +15,6 @@ const Navigation = () => {
   const [token, setToken] = useState()
 
 
-  useEffect(() =>{
-    setToken(Cookies.get('token'))
-  },[])
-
-
-
-
-
   const redirect = () =>{
     switch(role){
       case "0": history.push('/projects'); break;
@@ -32,40 +24,42 @@ const Navigation = () => {
   }
   
   const login = () =>{
-    if (token !== "undefined" && token) {
-    
-      Axios.put("https://wdys.herokuapp.com/verify", {token: token})
-      .then((res) => {
-        if (!res.err)
-        Cookies.set("token", res.data.token);
-        Cookies.set("role", res.data.role);
-        setUserId(res.data.user_id);
-        setUserName(res.data.displayname);
-        setRole(res.data.role);
-        return res.data.role;
-      })
-      .then((res) => {
-        switch (res) {
-          case "0":
-            history.push("/projects");
-            break;
-          case "1":
-            history.push("/translation");
-            break;
-          default:
-            history.push("/error");
-        }
-      });
-    }
-    else {
-     setModal(1); setModalOption(1)
-    }
+      if (Cookies.get('token') !== "undefined" && Cookies.get('token')) {
+      
+        Axios.put("http://localhost:3000/verify", {token: Cookies.get('token'), user_id: Cookies.get('user_id')})
+        .then((res) => {
+          Cookies.set("token", res.data.token);
+          Cookies.set("role", res.data.role);
+          setToken(res.data.token)
+          setUserId(res.data.user_id);
+          setUserName(res.data.displayname);
+          setRole(res.data.role);
+          return res.data.role;
+        })
+        .then((res) => {
+          switch (res) {
+            case "0":
+              history.push("/projects");
+              break;
+            case "1":
+              history.push("/translation");
+              break;
+            default:
+              history.push("/error");
+          }
+        });
+      }
+      else {
+      setModal(1); setModalOption(1)
+      }
   }
   
   const logout = (e) =>{
     Cookies.remove('token');
     Cookies.remove('role');
-    setToken("")
+    setUserId()
+    setToken()
+    setRole()
     history.push("/")
   }
 
