@@ -126,7 +126,7 @@ const { userId, setUserProjects, projectCounter, setProjectCounter } = useContex
 
           <Route
             exact
-            path="/translators/:userID"
+            path="/translators/:translatorID"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
                 <TranslatorDetails {...props} />

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { ReactComponent as Logo } from './wdys-logo.svg'
@@ -12,7 +12,6 @@ const Navigation = () => {
   const history = useHistory()
   const { setModal, setModalOption } = useContext(ModalContext)
   const { role, setRole, setUserId, setUserName, userId } = useContext(UserContext)
-  const [token, setToken] = useState()
 
 
   const redirect = () =>{
@@ -30,7 +29,6 @@ const Navigation = () => {
         .then((res) => {
           Cookies.set("token", res.data.token);
           Cookies.set("role", res.data.role);
-          setToken(res.data.token)
           setUserId(res.data.user_id);
           setUserName(res.data.displayname);
           setRole(res.data.role);
@@ -59,7 +57,6 @@ const Navigation = () => {
     Cookies.remove('role');
     Cookies.remove('user_id');
     setUserId()
-    setToken()
     setRole()
     history.push("/")
   }
