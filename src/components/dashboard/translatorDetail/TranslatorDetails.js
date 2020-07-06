@@ -15,10 +15,7 @@ const TranslatorDetails = () => {
     ModalContext
   );
 
-  const { userId } = useContext(
-    UserContext
-  );
-
+  const { userId } = useContext(UserContext);
 
     const { translatorID } = useParams();
   // const match = useRouteMatch();
