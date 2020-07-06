@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import ModalContext from "../../../contexts/ModalContext";
-import { Link, useRouteMatch, useParams } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import MoreVert from "@material-ui/icons/MoreVert";
 import "./Card.css";
 
 const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
-  const { setModal, setModalOption, setModalObject, modalObject } = useContext(
+  const { setModal, setModalOption, setModalObject } = useContext(
     ModalContext
   );
   
@@ -15,7 +15,7 @@ const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
    const open = Boolean(anchorEl);
 
   // router url parameters
-  const { userID } = useParams();
+  // const { userID } = useParams();
   const match = useRouteMatch();
   return (
     <div className="card">

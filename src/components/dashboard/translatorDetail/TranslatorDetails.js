@@ -33,7 +33,7 @@ const TranslatorDetails = () => {
       setBasePages(res.data.basepages);
       })
     .catch((err) => console.log(err))
-  }, [])
+  }, [userId, translatorID])
 
   // console.log(translatorDetails)
 

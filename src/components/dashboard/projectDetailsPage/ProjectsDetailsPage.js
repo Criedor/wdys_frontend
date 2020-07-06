@@ -13,7 +13,7 @@ const ProjectDetailsPage = () => {
   const { setModal, setModalOption} = useContext(ModalContext);
   const { userId, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators } = useContext(UserContext);
 
-  const open = Boolean(anchorEl);
+  
   const projID = useRouteMatch("/projects/:projID/:basePageID");
   const basePageID = useRouteMatch("/projects/:projID/:basePageID")
 
@@ -22,6 +22,8 @@ const ProjectDetailsPage = () => {
   const [translationPages, setTranslationPages] = useState()
   const [translators, setTranslators] = useState()
   const [baseProject, setBaseProject] = useState()
+
+  const open = Boolean(anchorEl);
 
   useEffect(() => {
     Axios
@@ -99,7 +101,7 @@ const ProjectDetailsPage = () => {
           <div className="field-wrapper">
             <label>Translation page link </label>
             <div className="custom-result"> 
-              <a className='green' href={basePage.page_url} target='_blank' rel="noopener noreferrer"> {basePage.page_url} </a>
+              <a className='green' href={basePage.page_url} rel="noopener noreferrer" target='_blank' > {basePage.page_url} </a>
             </div>
           </div>
         </div>

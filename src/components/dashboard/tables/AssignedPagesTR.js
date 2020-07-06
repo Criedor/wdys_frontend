@@ -23,7 +23,7 @@ const AssignedPagesTR = ({ translatorDetails, assignedPages }) => {
 
   return (
     <>
-    {assignedPages == 0 ? 
+    {assignedPages === 0 ? 
     <div className='no-table'>
       {`${translatorDetails.displayname} hasn't been assigned any pages yet, please assign pages in the project's page level`}
     </div> 
