@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import ProjectPagesTM from "../tables/ProjectPagesTM";
+import moment from 'moment'
 import Axios from 'axios'
 
 import "../Dashboard.css";
@@ -86,7 +87,7 @@ const ProjectDetails = () => {
 
           <div className="field-wrapper">
             <label>Deadline </label>
-            <div className="custom-result"> {projectdata.deadline} </div>
+            <div className="custom-result"> {moment(projectdata.deadline).format('DD-MM-YYYY')} </div>
           </div>
 
           <div className="field-wrapper">

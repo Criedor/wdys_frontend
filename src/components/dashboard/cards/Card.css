@@ -27,8 +27,12 @@
     padding: 1.875em 1.875em 1em;
 }
 
-.card-bottom .project-info{
+.card-bottom .project-info, .trans-info {
     margin-bottom: 1.25em;
+}
+
+.trans-info .lang-code {
+    text-transform: capitalize;
 }
 
 .card-bottom span {

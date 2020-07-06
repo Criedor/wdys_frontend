@@ -23,6 +23,7 @@ const App = () => {
   const [userProjects, setUserProjects] = useState([]);
   const [langs, setLangs] = useState([{lang: "ger", langname: "German"}]);
   const [projectCounter, setProjectCounter] = useState();
+  const [translatorCounter, setTranslatorCounter] = useState();
 
   // State to Open/Close the Edit/Delete popover menu
   const [anchorEl, setAnchorEl] = useState(null);
@@ -60,8 +61,6 @@ const App = () => {
     }
   }, [langs]);
 
-
-
   return (
     <div className="App">
       <ModalContext.Provider
@@ -74,7 +73,9 @@ const App = () => {
           setAnchorEl,
           open,
           modalObject, 
-          setModalObject
+          setModalObject,
+          translatorCounter, 
+          setTranslatorCounter
         }}
       >
         <UserContext.Provider
@@ -90,7 +91,7 @@ const App = () => {
             langs,
             setLangs,
             projectCounter,
-            setProjectCounter
+            setProjectCounter,
           }}
         >
           <Navigation />

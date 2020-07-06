@@ -1,29 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ModalContext from "../../../contexts/ModalContext";
 import { Link, useRouteMatch, useParams } from "react-router-dom";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import MoreVert from "@material-ui/icons/MoreVert";
 import "./Card.css";
 
-const Card = () => {
-  const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
+const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
+  const { setModal, setModalOption, setModalObject, modalObject } = useContext(
     ModalContext
   );
+  
+  const [anchorEl, setAnchorEl] = useState(null)
+   // const variable to
+   const open = Boolean(anchorEl);
 
   // router url parameters
   const { userID } = useParams();
   const match = useRouteMatch();
-
+    console.log(id)
   return (
     <div className="card">
       <div className="card-top">
-        <Link to={`${match.url}/${userID}`} style={{ color: "#ffffff" }}>
-          Translator's Name
+        <Link to={`${match.url}/${id}`} style={{ color: "#ffffff" }}>
+          {transName}
         </Link>
         <Button
           aria-controls="fade-menu"
           aria-haspopup="true"
-          onClick={(e) => setAnchorEl(e.currentTarget)}
+          onClick={(e) => setAnchorEl(e.target)}
           style={{ padding: 0, minWidth: 0 }}
         >
           <MoreVert style={{ color: "#ffffff" }} />
@@ -36,24 +40,27 @@ const Card = () => {
           onClose={(e) => setAnchorEl(false)}
         >
           <MenuItem
-            onClick={() => {
+            id={id}
+            onClick={(e) => {
               setModal(1);
               setModalOption(4);
               setAnchorEl(false);
+              setModalObject(e.currentTarget.id)
+              console.log(e.currentTarget)
             }}
           >
             Remove
           </MenuItem>
         </Menu>
       </div>
-      <Link to={`${match.url}/${userID}`}>
+      <Link to={`${match.url}/${id}`}>
         <div className="card-bottom">
-          <div className="project-info">
+          <div className="trans-info">
             Languages:
-            <span> German, Italian, Portuguese</span>
+          <span className='lang-code'> {transLangs.join(", ")}</span>
           </div>
-          <div className="project-info">
-            Email: <span> james.matthew.scotch@email.com</span>
+          <div className="trans-info">
+            Email: <span> {transEmail}</span>
           </div>
         </div>
       </Link>
@@ -61,4 +68,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default CardTranslators;

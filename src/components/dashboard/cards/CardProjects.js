@@ -3,10 +3,11 @@ import { useHistory } from 'react-router-dom'
 import ModalContext from "../../../contexts/ModalContext";
 import { Link, useRouteMatch } from "react-router-dom";
 import { Button, Menu, MenuItem } from "@material-ui/core";
+import moment from 'moment'
 import MoreVert from "@material-ui/icons/MoreVert";
 import "./Card.css";
 
-const Card = ( props ) => {
+const CardProjects = ( props ) => {
   const { setModal, setModalOption, setModalObject } = useContext(
     ModalContext
   );
@@ -77,7 +78,7 @@ const Card = ( props ) => {
             <span> {props.langs.join(", ")}</span>
           </div>
           <div className="project-info">
-            By: <span> {props.deadline}</span>
+            By: <span> {moment(props.deadline).format('DD-MM-YYYY')}</span>
           </div>
         </div>
       </Link>
@@ -85,4 +86,4 @@ const Card = ( props ) => {
   );
 };
 
-export default Card;
+export default CardProjects;

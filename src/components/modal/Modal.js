@@ -28,7 +28,7 @@ const Modal = () => {
                 setModal(0);
                 setModalOption(1);
               }}
-              style={{ cursor: "pointer", color: "#ffffff" }}
+              style={{ cursor: "pointer", color: "inherit" }}
             />
           </div>
 
