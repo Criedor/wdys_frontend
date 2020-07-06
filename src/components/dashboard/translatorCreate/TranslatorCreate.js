@@ -1,15 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import SelectAutocomplete from "../selectFields/SelectAutocomplete";
+import React, {useState, useContext} from "react";
+import { useHistory } from "react-router-dom";
+import SelectAutocompleteTranslatorCreate from "../selectFields/SelectAutocompleteTranslatorCreate";
+import Axios from 'axios'
+import UserContext from "../../../contexts/UserContext";
+import ModalContext from "../../../contexts/ModalContext";
 import "../Dashboard.css";
 
 const TranslatorCreate = () => {
-  // const { userID } = useParams();
+  const history = useHistory()
+  const {userId } = useContext(UserContext)
+  const { setTranslatorCounter,translatorCounter } = useContext(ModalContext)
+  const [selectedLangs, setSelectedLangs] = useState()
+  
+  const getLangs = (LangsInput) => {
+    setSelectedLangs(LangsInput)
+  }
+
+  const create = (e)=>{
+    e.preventDefault()
+    Axios
+      .post(`https://wdys.herokuapp.com/translators/create`,{"email":e.target[1].value, "translator_langs":selectedLangs, "displayname":e.target[0].value, "user_id":userId})
+      .then((res) => { 
+          setTranslatorCounter(translatorCounter-1)
+          history.push("/translators")
+      })
+      .catch((err) => console.log(err))
+  }
+
+
+
+
 
   return (
     <div className="body-project-create">
       <div className="col-center-full">
-        <form>
+        <form onSubmit={(e)=>create(e)}>
           <div className="field-wrapper">
             <label htmlFor="trans-create-name">Name *</label>
             <input
@@ -21,7 +46,7 @@ const TranslatorCreate = () => {
           </div>
 
           <div className="field-wrapper">
-            <label htmlFor="trans-create-email">Name *</label>
+            <label htmlFor="trans-create-email">Email *</label>
             <input
               id="trans-create-email"
               className="custom-input"
@@ -34,13 +59,11 @@ const TranslatorCreate = () => {
             <label htmlFor="trans-create-trans-lang">
               Select Language(s) *
             </label>
-            <SelectAutocomplete id={"trans-create-trans-lang"} />
+            <SelectAutocompleteTranslatorCreate id={"trans-create-trans-lang"} getLangs={getLangs}/>
           </div>
-          <Link to={`/translators`}>
             <button className="action blue" type="submit">
               Create
             </button>
-          </Link>
         </form>
       </div>
     </div>
