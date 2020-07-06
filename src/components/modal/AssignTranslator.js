@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useRouteMatch, useHistory } from 'react-router-dom'  ;
 import ModalContext from "../../contexts/ModalContext";
+import UserContext from "../../contexts/UserContext";
 import SelectFieldTranslationPages from "../dashboard/selectFields/SelectFieldTranslationPages";
 import SelectFieldTranslator from "../dashboard/selectFields/SelectFieldTranslator";
 import Axios from 'axios'
@@ -22,7 +23,7 @@ const AssignTranslator = () => {
       .then((res) => { 
         setModal(0);
         setModalOption(1);
-        history.push(`./${projID.params.basePageID}`)
+        history.push(`${projID.params.basePageID}`)
       })
       .catch((err) => console.log(err))    
   }

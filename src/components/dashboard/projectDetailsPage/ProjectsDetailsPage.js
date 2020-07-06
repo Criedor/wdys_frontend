@@ -22,6 +22,7 @@ const ProjectDetailsPage = () => {
 
 
 
+
   useEffect(() => {
     Axios
     .get(`https://wdys.herokuapp.com/projects/${projID.params.projID}/${userId}/${basePageID.params.basePageID}`)
@@ -34,7 +35,7 @@ const ProjectDetailsPage = () => {
       setBaseProject(res.data.baseproject)
     })
     .catch((err) => console.log(err))
-  }, [basePageID.params.basePageID, projID.params.projID, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
+  }, [basePageID.params.basePageID, projID.params.projID,  setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
 
 
   return (

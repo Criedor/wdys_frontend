@@ -27,7 +27,7 @@ const SelectAutocomplete = ({ id, getLangs}) => {
         options={langs.map((option) => option.langname)}
         defaultValue={[langs[1].langname]}
         freeSolo
-        onChange={(e,l)=>{getLangs(l)}}
+        onChange={(e,l)=>getLangs(l)}
         renderTags={(value, getTagProps) =>
           value.map((option, index) => (
             <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })} />
