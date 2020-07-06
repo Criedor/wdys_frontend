@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ModalContext from "../../../contexts/ModalContext";
 import UserContext from "../../../contexts/UserContext";
 import { useParams } from "react-router-dom";
@@ -9,6 +9,8 @@ import Axios from 'axios';
 import "../Dashboard.css";
 
 const TranslatorDetails = () => {
+  const [translatorDetails, setTranslatorDetails] = useState()
+
   const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
     ModalContext
   );
@@ -20,13 +22,15 @@ const TranslatorDetails = () => {
 
     const { translatorID } = useParams();
   // const match = useRouteMatch();
-console.log(translatorID)
+
   useEffect(() => {
     let url = `https://wdys.herokuapp.com/translators/${userId}/${translatorID}`
     Axios
     .get(url)
-    .then((res) => console.log(res.data))
+    .then((res) => setTranslatorDetails(res.data.translator))
   }, [])
+
+  console.log(translatorDetails)
 
   return (
     <div className="body-project-details">
