@@ -14,7 +14,7 @@ const Sidebar = () => {
   
   return (
     <>
-    {role==0?
+    {role==="0"?
     <div className='sidebar'>
       <Link to='/projects'>
         <div className={`sidebar-button ${(matchProjects)?'active':''}`}>

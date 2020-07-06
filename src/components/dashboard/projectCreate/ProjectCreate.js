@@ -12,7 +12,7 @@ import "../Dashboard.css";
 
 const ProjectCreate = () => {
   const history = useHistory()
-  const {userId, setProjectCounter, projectCounter} = useContext(UserContext)
+  const {userId, setProjectCounter} = useContext(UserContext)
   const [selectedLangs, setSelectedLangs] = useState()
   
   const getLangs = (LangsInput) => {

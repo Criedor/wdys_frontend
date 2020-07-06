@@ -12,11 +12,11 @@ const TranslatorDetails = () => {
     ModalContext
   );
 
-    const { userId } = useParams();
+    const { translatorID } = useParams();
   // const match = useRouteMatch();
 
   useEffect(() => {
-    let url = `https://wdys.herokuapp.com/translators/${userId}`
+    let url = `https://wdys.herokuapp.com/translators/${translatorID}`
   }
 
   )
