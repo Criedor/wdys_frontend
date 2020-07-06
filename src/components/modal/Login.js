@@ -22,6 +22,7 @@ const Login = () => {
       .then((res) => {
         Cookies.set("token", res.data.token);
         Cookies.set("role", res.data.role);
+        Cookies.set("user_id", res.data.user_id);
         setUserId(res.data.user_id);
         setUserName(res.data.displayname);
         setRole(res.data.role);
