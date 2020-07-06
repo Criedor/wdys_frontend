@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import ModalContext from "../../../contexts/ModalContext";
 import UserContext from "../../../contexts/UserContext";
-import { Link, useRouteMatch, useHistory } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import { FormControl } from "@material-ui/core";
 // import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
 import moment from 'moment'
@@ -10,7 +10,7 @@ import "../Dashboard.css";
 
 const ProjectDetailsPageEdit = () => {
   const { setModal, setModalOption} = useContext(ModalContext);
-  const { userId } = useContext(UserContext);
+  const { userId, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators } = useContext(UserContext);
   const projID = useRouteMatch("/projects/:projID/:basePageID");
   const basePageID = useRouteMatch("/projects/:projID/:basePageID")
   const [basePage, setBasePage] = useState()
@@ -35,15 +35,17 @@ const ProjectDetailsPageEdit = () => {
     Axios
     .get(`https://wdys.herokuapp.com/projects/${projID.params.projID}/${userId}/${basePageID.params.basePageID}`)
     .then((res) => { 
-      console.log(res);
       setBasePage(res.data.basepage);
       setTranslators(res.data.translators);
       setTranslationPages(res.data.translationpage)
+      setAssignTranslatorTranslationPages(res.data.translationpage)
+      setAssignTranslatorTranslators(res.data.translators);
       setBaseProject(res.data.baseproject)
     })
     .catch((err) => console.log(err))
-  }, []);
-  console.log(basePage)
+  }, [basePageID.params.basePageID, projID.params.projID, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
+
+
   return (
     <>
     {basePage &&  baseProject && translators && translationPages &&
@@ -99,17 +101,12 @@ const ProjectDetailsPageEdit = () => {
       <div className="column-right">
         <div className="title-gray">
           Translators
-          <Link to=""
-            onClick={() => {
-              setModal(1);
-              setModalOption(5);
-            }}
-          >
-            <div className="assign-button">+</div>
-          </Link>
+          <div className="assign-button" onClick={() => {setModal(1); setModalOption(5)}}>
+            +
+          </div>
         </div>
         <div>
-        {/* <AssignedTranslatorsTM translators={translators} translationpages={translationPages}/> */}
+        <AssignedTranslatorsTM translators={translators} translationpages={translationPages}/>
         </div>
       </div>
     </div>

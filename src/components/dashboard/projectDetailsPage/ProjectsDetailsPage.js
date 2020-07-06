@@ -11,7 +11,7 @@ import "../Dashboard.css";
 
 const ProjectDetailsPage = () => {
   const { setModal, setModalOption} = useContext(ModalContext);
-  const { userId } = useContext(UserContext);
+  const { userId, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators } = useContext(UserContext);
   const [anchorEl, setAnchorEl] = useState()
   const open = Boolean(anchorEl);
   const projID = useRouteMatch("/projects/:projID/:basePageID");
@@ -23,19 +23,20 @@ const ProjectDetailsPage = () => {
 
 
 
+
   useEffect(() => {
-   
     Axios
     .get(`https://wdys.herokuapp.com/projects/${projID.params.projID}/${userId}/${basePageID.params.basePageID}`)
     .then((res) => { 
-      console.log(res);
       setBasePage(res.data.basepage);
+      setAssignTranslatorTranslationPages(res.data.translationpage);
       setTranslators(res.data.translators);
-      setTranslationPages(res.data.translationpage)
+      setAssignTranslatorTranslators(res.data.translators);
+      setTranslationPages(res.data.translationpage);
       setBaseProject(res.data.baseproject)
     })
     .catch((err) => console.log(err))
-  }, []);
+  }, [basePageID.params.basePageID, projID.params.projID,  setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
 
   
   return (
@@ -106,15 +107,10 @@ const ProjectDetailsPage = () => {
       </div>
       <div className="column-right">
         <div className="title-gray">
-          Translators
-          <Link to=""
-            onClick={() => {
-              setModal(1);
-              setModalOption(5);
-            }}
-          >
-            <div className="assign-button">+</div>
-          </Link>
+        Translators
+          <div className="assign-button" onClick={() => {setModal(1); setModalOption(5)}}>
+            +
+          </div>
         </div>
         <div>
           <AssignedTranslatorsTM translators={translators} translationpages={translationPages}/>

@@ -56,7 +56,7 @@ const { userId, setUserProjects, projectCounter, setProjectCounter } = useContex
       setProjectCounter(res.data.userprojects.length)
     })
     .catch((err) => console.log(err))
-  }, [userId, projectCounter]);
+  }, [userId, projectCounter, setUserProjects, setProjectCounter]);
 
   return (
     <div className="dashboard">

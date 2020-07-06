@@ -24,6 +24,8 @@ const App = () => {
   const [langs, setLangs] = useState([{lang: "ger", langname: "German"}]);
   const [projectCounter, setProjectCounter] = useState();
   const [translatorCounter, setTranslatorCounter] = useState();
+  const [assignTranslatorTranslationPages, setAssignTranslatorTranslationPages] = useState()
+  const [assignTranslatorTranslators, setAssignTranslatorTranslators] = useState()
 
   // State to Open/Close the Edit/Delete popover menu
   const [anchorEl, setAnchorEl] = useState(null);
@@ -92,6 +94,10 @@ const App = () => {
             setLangs,
             projectCounter,
             setProjectCounter,
+            assignTranslatorTranslationPages, 
+            setAssignTranslatorTranslationPages,
+            assignTranslatorTranslators, 
+            setAssignTranslatorTranslators
           }}
         >
           <Navigation />

@@ -14,12 +14,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const SelectAutocomplete = ({ id, getLangs}) => {
   const {langs} = useContext(UserContext)
   const classes = useStyles();
-  // console.log({selectAutocomplete: id})
-
+  
   return (
     
     <div className={classes.root}>
@@ -29,7 +27,7 @@ const SelectAutocomplete = ({ id, getLangs}) => {
         options={langs.map((option) => option.langname)}
         defaultValue={[langs[1].langname]}
         freeSolo
-        onChange={(e,l)=>{getLangs(l)}}
+        onChange={(e,l)=>getLangs(l)}
         renderTags={(value, getTagProps) =>
           value.map((option, index) => (
             <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })} />
@@ -43,16 +41,5 @@ const SelectAutocomplete = ({ id, getLangs}) => {
     
   );
 }
-
-// const languages = [
-//     {lang:'Dutch'},
-//     {lang:'English'},
-//     {lang:'French'},
-//     {lang:'German'},
-//     {lang:'Italian'},
-//     {lang:'Portuguese'},
-//     {lang:'Xhosa'},
-//     {lang:'Zulu'},
-// ];
 
 export default SelectAutocomplete

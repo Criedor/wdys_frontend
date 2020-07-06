@@ -1,44 +1,53 @@
-import React from "react";
+import React, {useEffect, useState, useContext} from "react";
 import { Visibility } from "@material-ui/icons";
 import { Link, useRouteMatch } from "react-router-dom";
+import Axios from 'axios'
 import "../cards/Card.css";
 import "../tables/Tables.css";
 import "../Dashboard.css"
 import "./Translation.css"
+import UserContext from "../../../contexts/UserContext";
 
-function createData(pageName, status, assigned, due, view) {
-  return { pageName, status, assigned, due, view };
-}
 
-const rows = [
-  createData("Frozen yoghurt", "open", "2020/07/07", "7 Days", "X"),
-  createData("Ice cream sandwich", "review", "2020/07/07", "7 Days", "X"),
-  createData("Eclair", "open", "2020/07/07", "7 Days", "X"),
-  createData("Cupcake", "done", "2020/06/07", "done", "X"),
-  createData("Gingerbread", "done", "2020/06/07", "done", "X"),
-];
 
 const Translation = () => {
+  const {userId} = useContext(UserContext)
+  const [baseProjects, setBaseProjects] = useState()
+  const [assignedPages, setAssignedPages] = useState()
   
+  useEffect(() => {
+    Axios
+    .get(`https://wdys.herokuapp.com/translation/${userId}`, {headers: {'Content-Type':'application/json'}})
+    .then((res) => { 
+      console.log(res.data.baseprojects);
+      console.log(res.data.assignedPages)
+      setBaseProjects(res.data.baseprojects);
+      setAssignedPages(res.data.assignedPages)
+    })
+    .catch((err) => console.log(err))
+  }, [userId]);
+
+
+
   return (
+    <>
+    {assignedPages && baseProjects &&
     <div className="body-translation">
       <div>
         <div className="title-gray">
             Assigned Projects
         </div>
         <div className="assigned-proj-TR header table-grid">
-          <div>Page Name</div>
-          <div>Status</div>
-          <div>Assigned</div>
-          <div>Due</div>
+          <div>Project Name</div>
+          <div>Base language</div>
+          <div>Deadline</div>
           <div>View</div>
         </div>
-        {rows.map((item) => (
-          <div className="assigned-proj-TR table-grid" key={item.pageName}>
-            <div>{item.pageName}</div>
-            <div>{item.status}</div>
-            <div>{item.assigned}</div>
-            <div>{item.due}</div>
+        {assignedPages.map((item) => (
+          <div className="assigned-proj-TR table-grid" key={item.projectname}>
+            <div>{item.projectname}</div>
+            <div>{item.baselang}</div>
+            <div>{item.deadline}</div>
             <div className="center">
               <Visibility />
             </div>
@@ -77,7 +86,7 @@ const Translation = () => {
               <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
             </div>
             <div className="center">
-              <Link to={`${useRouteMatch().url}/${"TRANSLATIONPAGE_ID"}`}>
+              <Link to={``}>
                 <button className="blue action ">REVIEW</button>
               </Link>
             </div>
@@ -85,6 +94,8 @@ const Translation = () => {
         </div>
       </div>
     </div>
+    }
+  </>
   );
 };
 
