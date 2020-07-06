@@ -26,7 +26,7 @@ const Navigation = () => {
   const login = () =>{
       if (Cookies.get('token') !== "undefined" && Cookies.get('token')) {
       
-        Axios.put("http://localhost:3000/verify", {token: Cookies.get('token'), user_id: Cookies.get('user_id')})
+        Axios.put("https://wdys.herokuapp.com/verify", {token: Cookies.get('token'), user_id: Cookies.get('user_id')})
         .then((res) => {
           Cookies.set("token", res.data.token);
           Cookies.set("role", res.data.role);
@@ -57,6 +57,7 @@ const Navigation = () => {
   const logout = (e) =>{
     Cookies.remove('token');
     Cookies.remove('role');
+    Cookies.remove('user_id');
     setUserId()
     setToken()
     setRole()
