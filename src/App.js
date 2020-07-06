@@ -23,6 +23,7 @@ const App = () => {
   const [userProjects, setUserProjects] = useState([]);
   const [langs, setLangs] = useState([{lang: "ger", langname: "German"}]);
   const [projectCounter, setProjectCounter] = useState();
+  const [translatorCounter, setTranslatorCounter] = useState();
   const [assignTranslatorTranslationPages, setAssignTranslatorTranslationPages] = useState()
   const [assignTranslatorTranslators, setAssignTranslatorTranslators] = useState()
 
@@ -62,8 +63,6 @@ const App = () => {
     }
   }, [langs]);
 
-
-
   return (
     <div className="App">
       <ModalContext.Provider
@@ -76,7 +75,9 @@ const App = () => {
           setAnchorEl,
           open,
           modalObject, 
-          setModalObject
+          setModalObject,
+          translatorCounter, 
+          setTranslatorCounter
         }}
       >
         <UserContext.Provider

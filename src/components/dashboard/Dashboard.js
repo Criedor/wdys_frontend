@@ -6,6 +6,7 @@ import CrumbsAction from "./crumbsAction/CrumbsAction";
 import ProjectDetailsPage from "./projectDetailsPage/ProjectsDetailsPage";
 import TranslatorCreate from "./translatorCreate/TranslatorCreate";
 import TranslatorDetails from "./translatorDetail/TranslatorDetails";
+import Translator from "./translator/Translator";
 import ProjectEdit from "./projectEdit/projectEdit";
 import ProjectCreate from "./projectCreate/ProjectCreate";
 import ProjectDetailsPageEdit from "./projectDetailsPageEdit/projectDetailsPageEdit";
@@ -45,7 +46,7 @@ const Dashboard = () => {
 
 const { userId, setUserProjects, projectCounter, setProjectCounter } = useContext(UserContext);
 
- 
+ // API call to load the Projects section
   useEffect(() => {
     let url = `https://wdys.herokuapp.com/initial/${userId}`
     Axios
@@ -89,6 +90,16 @@ const { userId, setUserProjects, projectCounter, setProjectCounter } = useContex
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
                 <ProjectEdit {...props} />
+              </ThemeProvider>
+            )}
+          />
+
+          <Route
+            exact
+            path="/projects/:projID/:basePageID/compare"
+            render={(props) => (
+              <ThemeProvider theme={inputTheme320}>
+                <Compare {...props} />
               </ThemeProvider>
             )}
           />
@@ -143,7 +154,7 @@ const { userId, setUserProjects, projectCounter, setProjectCounter } = useContex
             path="/translators"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
-                <Projects {...props} />
+                <Translator {...props} />
               </ThemeProvider>
             )}
           />

@@ -5,6 +5,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
+import moment from 'moment'
 import Axios from 'axios'
 import "../Dashboard.css";
 
@@ -37,7 +38,7 @@ const ProjectDetailsPage = () => {
     .catch((err) => console.log(err))
   }, [basePageID.params.basePageID, projID.params.projID,  setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
 
-
+  
   return (
     <>
     {basePage &&  baseProject && translators && translationPages &&
@@ -67,7 +68,8 @@ const ProjectDetailsPage = () => {
                 }}
               >
                 Edit
-              </MenuItem>           </Link>
+              </MenuItem>
+            </Link>
             <MenuItem
               onClick={() => {
                 setModal(1);
@@ -81,7 +83,7 @@ const ProjectDetailsPage = () => {
         </div>
         <div className="col-left-info">
           <div className="field-wrapper">
-            <label>From </label>
+            <label>Project </label>
             <div className="custom-result"> {baseProject.projectname} </div>
           </div>
 
@@ -92,7 +94,14 @@ const ProjectDetailsPage = () => {
 
           <div className="field-wrapper">
             <label>Deadline </label>
-            <div className="custom-result"> {baseProject.deadline} </div>
+            <div className="custom-result"> {moment(baseProject.deadline).format('DD-MM-YYYY')} </div>
+          </div>
+
+          <div className="field-wrapper">
+            <label>Translation page link </label>
+            <div className="custom-result"> 
+              <a className='green' href={basePage.page_url} target='_blank'> {basePage.page_url} </a>
+            </div>
           </div>
         </div>
       </div>

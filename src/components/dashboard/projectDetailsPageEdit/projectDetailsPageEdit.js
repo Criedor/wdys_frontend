@@ -3,7 +3,8 @@ import ModalContext from "../../../contexts/ModalContext";
 import UserContext from "../../../contexts/UserContext";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { FormControl } from "@material-ui/core";
-import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
+// import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
+import moment from 'moment'
 import Axios from 'axios'
 import "../Dashboard.css";
 
@@ -44,6 +45,7 @@ const ProjectDetailsPageEdit = () => {
     .catch((err) => console.log(err))
   }, [basePageID.params.basePageID, projID.params.projID, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
 
+
   return (
     <>
     {basePage &&  baseProject && translators && translationPages &&
@@ -79,11 +81,17 @@ const ProjectDetailsPageEdit = () => {
             <FormControl>
               <div className="field-wrapper">
                 <label htmlFor={"proj-details-page-deadline"}>Deadline </label>
-                <div className="field-wrapper">
-                  <div className="custom-result"> {baseProject.deadline} </div>
-                </div>
+                  <div className="custom-result"> {moment(baseProject.deadline).format('DD-MM-YYYY')} </div>
               </div>
             </FormControl>
+            <FormControl>
+            <div className="field-wrapper">
+              <label>Translation page link </label>
+              <div className="custom-result"> 
+                <a className='green' href={basePage.page_url} target='_blank'> {basePage.page_url} </a>
+              </div>
+            </div>
+          </FormControl>
             <button className="action blue" type="submit">
                 save
             </button>

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import ModalContext from "../../contexts/ModalContext";
 import UserContext from "../../contexts/UserContext";
-import Axios from 'axios'
 import { Delete } from "@material-ui/icons";
+import Axios from 'axios'
 import "./Modal.css";
 
 const DeleteProject = () => {

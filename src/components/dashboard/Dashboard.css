@@ -60,6 +60,11 @@ label {
     align-items: center;
 }
 
+.custom-result a {
+    font-weight: 600;
+    margin-top: 1em;
+}
+
 .field-wrapper {
     margin: 5px 0 50px;
 }

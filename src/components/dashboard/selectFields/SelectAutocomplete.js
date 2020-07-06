@@ -42,5 +42,4 @@ const SelectAutocomplete = ({ id, getLangs}) => {
   );
 }
 
-
 export default SelectAutocomplete
