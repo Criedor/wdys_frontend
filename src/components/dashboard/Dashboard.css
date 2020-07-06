@@ -2,9 +2,8 @@
     display: grid;
     grid-column: 1 / span 3;
     grid-template-columns: minmax(230px, 1fr) minmax(280px, 1140px) 1fr;
-    grid-template-rows: 100vh;
     padding-top: 5em;
-}
+    }
 
 .dashboard-body {
     display: grid;
@@ -53,6 +52,7 @@ label {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     outline: none;
 }
+
 
 .custom-result {
     height: 40px;
@@ -108,4 +108,5 @@ label {
     color: #ffffff;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
     text-decoration: none;
+    cursor: pointer;
 }

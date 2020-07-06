@@ -1,24 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ModalContext from "../../../contexts/ModalContext";
+import UserContext from "../../../contexts/UserContext";
 import { Link, useParams } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import ProjectPagesTM from "../tables/ProjectPagesTM";
+import Axios from 'axios'
+
 import "../Dashboard.css";
 
 const ProjectDetails = () => {
-  const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
-    ModalContext
-  );
-
+  const { setModal, setModalOption } = useContext(ModalContext);
+  const { userId } = useContext(UserContext);
   const { projID } = useParams();
-  // const match = useRouteMatch();
+  const [projectdata, setProjectdata] = useState();
+  const [projectpages, setProjectPages] = useState()
+  const [anchorEl, setAnchorEl] = useState()
+  const open = Boolean(anchorEl);
+
+  useEffect(() => {
+    Axios
+    .get(`https://wdys.herokuapp.com/projects/${projID}/${userId}`)
+    .then((res) => { 
+      setProjectdata(res.data.project);
+      setProjectPages(res.data.pages)
+    })
+    .catch((err) => console.log(err))
+  }, [userId, projID]);
+
+
+
 
   return (
+    <>
+    {projectdata &&  
     <div className="body-project-details">
       <div className="col-left-380">
         <div className="title-gray">
-          Project Name
+          {projectdata.projectname}
           <Button
             aria-controls="fade-menu"
             aria-haspopup="true"
@@ -57,23 +76,23 @@ const ProjectDetails = () => {
         <div className="col-left-info">
           <div className="field-wrapper">
             <label>Base Language </label>
-            <div className="custom-result"> Language </div>
+            <div className="custom-result"> {projectdata.baselang} </div>
           </div>
 
           <div className="field-wrapper w-320">
             <label>Translation Language(s) </label>
-            <div className="custom-result"> Translation language(s) </div>
+            <div className="custom-result"> {projectdata.langs.join(", ")} </div>
           </div>
 
           <div className="field-wrapper">
             <label>Deadline </label>
-            <div className="custom-result"> 29/06/2020 </div>
+            <div className="custom-result"> {projectdata.deadline} </div>
           </div>
 
           <div className="field-wrapper">
             <label htmlFor={"proj-details-deadline"}>Project ID </label>
             <div className="custom-result green">
-              wdys-project-name-02943r734r39
+              {projectdata._id}
             </div>
           </div>
         </div>
@@ -81,10 +100,12 @@ const ProjectDetails = () => {
       <div className="column-right">
         <div className="title-gray">Project pages</div>
         <div>
-          <ProjectPagesTM />
+          <ProjectPagesTM projectpages={projectpages}/>
         </div>
       </div>
     </div>
+  }
+  </>
   );
 };
 
