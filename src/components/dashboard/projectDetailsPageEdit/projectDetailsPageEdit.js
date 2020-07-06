@@ -88,7 +88,7 @@ const ProjectDetailsPageEdit = () => {
             <div className="field-wrapper">
               <label>Translation page link </label>
               <div className="custom-result"> 
-                <a className='green' href={basePage.page_url} target='_blank'  rel="noopener noreferrer"> {basePage.page_url} </a>
+                <a className='green' href={basePage.page_url} rel="noopener noreferrer" target='_blank'> {basePage.page_url} </a>
               </div>
             </div>
           </FormControl>

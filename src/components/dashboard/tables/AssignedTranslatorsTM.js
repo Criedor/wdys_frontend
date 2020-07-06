@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Visibility } from "@material-ui/icons";
 import "../tables/Tables.css";
-var uniqid = require('uniqid');
+let uniqid = require('uniqid');
 
 const AssignedTranslatorsTM = ({translators, translationpages}) => {
   return (

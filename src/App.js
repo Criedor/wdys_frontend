@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/navigation/Navigation";
-import Entry from "./components/Entry";
+import Entry from "./components/landingPage/Entry";
 import Protected from "./Protected";
 import { withStyles } from "@material-ui/core/styles";
 import Modal from "./components/modal/Modal";
