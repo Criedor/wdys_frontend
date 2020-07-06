@@ -17,7 +17,6 @@ const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
   // router url parameters
   const { userID } = useParams();
   const match = useRouteMatch();
-    console.log(id)
   return (
     <div className="card">
       <div className="card-top">
@@ -46,7 +45,6 @@ const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
               setModalOption(4);
               setAnchorEl(false);
               setModalObject(e.currentTarget.id)
-              console.log(e.currentTarget)
             }}
           >
             Remove

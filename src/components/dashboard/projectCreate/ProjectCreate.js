@@ -24,7 +24,7 @@ const ProjectCreate = () => {
     Axios
       .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline":e.target[4].value, "owner_id": userId})
       .then((res) => { 
-          setProjectCounter(projectCounter+1)
+          setProjectCounter(0)
           history.push("/projects")
       })
       .catch((err) => console.log(err))
