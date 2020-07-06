@@ -12,17 +12,16 @@ import "../Dashboard.css";
 const ProjectDetailsPage = () => {
   const { setModal, setModalOption} = useContext(ModalContext);
   const { userId, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators } = useContext(UserContext);
-  const [anchorEl, setAnchorEl] = useState()
+
   const open = Boolean(anchorEl);
   const projID = useRouteMatch("/projects/:projID/:basePageID");
   const basePageID = useRouteMatch("/projects/:projID/:basePageID")
+
+  const [anchorEl, setAnchorEl] = useState()
   const [basePage, setBasePage] = useState()
   const [translationPages, setTranslationPages] = useState()
   const [translators, setTranslators] = useState()
   const [baseProject, setBaseProject] = useState()
-
-
-
 
   useEffect(() => {
     Axios
@@ -38,7 +37,7 @@ const ProjectDetailsPage = () => {
     .catch((err) => console.log(err))
   }, [basePageID.params.basePageID, projID.params.projID,  setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
 
-  
+  // console.log(translationPages)
   return (
     <>
     {basePage &&  baseProject && translators && translationPages &&

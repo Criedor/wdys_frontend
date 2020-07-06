@@ -1,31 +1,49 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ModalContext from "../../../contexts/ModalContext";
+import UserContext from "../../../contexts/UserContext";
 import { useParams } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
-import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
+import AssignedPagesTR from "../tables/AssignedPagesTR";
 import Axios from 'axios';
 import "../Dashboard.css";
 
 const TranslatorDetails = () => {
+  const [translatorDetails, setTranslatorDetails] = useState()
+  const [assignedPages, setAssignedPages] = useState()
+  const [basePages, setBasePages] = useState()
+
   const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
     ModalContext
   );
 
+  const { userId } = useContext(UserContext);
+
     const { translatorID } = useParams();
   // const match = useRouteMatch();
+  console.log(assignedPages)
 
   useEffect(() => {
-    let url = `https://wdys.herokuapp.com/translators/${translatorID}`
-  }
+    let url = `https://wdys.herokuapp.com/translators/${userId}/${translatorID}`
+    Axios
+    .get(url)
+    .then((res) => {
+      setTranslatorDetails(res.data.translator);
+      setAssignedPages(res.data.assignedPages);
+      setBasePages(res.data.basepages);
+      })
+    .catch((err) => console.log(err))
+  }, [])
 
-  )
+  // console.log(translatorDetails)
 
   return (
-    <div className="body-project-details">
+    <>
+    {translatorDetails &&
+      <div className="body-project-details">
       <div className="col-left-380">
         <div className="title-gray">
-          Translator's Name
+          {translatorDetails.displayname}
           <Button
             aria-controls="fade-menu"
             aria-haspopup="true"
@@ -55,13 +73,13 @@ const TranslatorDetails = () => {
         <div className="col-left-info">
           <div className="field-wrapper">
             <label>Email </label>
-            <div className="custom-result"> example@email.com </div>
+            <div className="custom-result"> {translatorDetails.email} </div>
           </div>
 
           <div className="field-wrapper w-320">
             <label>Translation Language(s) </label>
             <div className="custom-result">
-              English, French, German, Italian
+              {translatorDetails.translator_langs.join(', ')}
             </div>
           </div>
         </div>
@@ -70,10 +88,15 @@ const TranslatorDetails = () => {
       <div className="column-right">
         <div className="title-gray">Assigned pages</div>
         <div>
-          <AssignedTranslatorsTM />
+          <AssignedPagesTR 
+            translatorDetails={translatorDetails} 
+            assignedPages={assignedPages} 
+            basePages={basePages}
+            />
         </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 

@@ -34,6 +34,11 @@
     grid-template-columns: 4fr 2fr 2fr 1fr;
 }
 
+.no-table {
+    grid-template-columns: 1fr;
+    padding: 1.875em;
+}
+
 .header {
     background-color: #000;
     grid-template-rows: 50px;

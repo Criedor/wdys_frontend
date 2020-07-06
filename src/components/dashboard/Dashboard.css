@@ -40,7 +40,8 @@
 
 label {
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.5)
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 1em;
 }
 
 .custom-input {
@@ -55,9 +56,10 @@ label {
 
 
 .custom-result {
-    height: 40px;
+    margin-top:0.5em;
     display: flex;
     align-items: center;
+    line-height: 1.5em;
 }
 
 .custom-result a {
