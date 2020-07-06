@@ -3,7 +3,7 @@ import ModalContext from "../../../contexts/ModalContext";
 import UserContext from "../../../contexts/UserContext";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { FormControl } from "@material-ui/core";
-// import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
+import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
 import moment from 'moment'
 import Axios from 'axios'
 import "../Dashboard.css";

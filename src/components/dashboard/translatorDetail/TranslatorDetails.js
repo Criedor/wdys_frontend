@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import ModalContext from "../../../contexts/ModalContext";
+import UserContext from "../../../contexts/UserContext";
 import { useParams } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
@@ -12,14 +13,20 @@ const TranslatorDetails = () => {
     ModalContext
   );
 
-    const { userId } = useParams();
+  const { userId } = useContext(
+    UserContext
+  );
+
+
+    const { translatorID } = useParams();
   // const match = useRouteMatch();
-
+console.log(translatorID)
   useEffect(() => {
-    let url = `https://wdys.herokuapp.com/translators/${userId}`
-  }
-
-  )
+    let url = `https://wdys.herokuapp.com/translators/${userId}/${translatorID}`
+    Axios
+    .get(url)
+    .then((res) => console.log(res.data))
+  }, [])
 
   return (
     <div className="body-project-details">

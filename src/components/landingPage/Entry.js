@@ -1,6 +1,6 @@
 import React from 'react';
 import './Entry.css';
-import '../global.css'
+import '../../global.css'
 
 
 
