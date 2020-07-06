@@ -4,12 +4,14 @@ import UserContext from "../../../contexts/UserContext";
 import { useParams } from "react-router-dom";
 import MoreVert from "@material-ui/icons/MoreVert";
 import { Button, Menu, MenuItem } from "@material-ui/core";
-import AssignedTranslatorsTM from "../tables/AssignedTranslatorsTM";
+import AssignedPagesTR from "../tables/AssignedPagesTR";
 import Axios from 'axios';
 import "../Dashboard.css";
 
 const TranslatorDetails = () => {
   const [translatorDetails, setTranslatorDetails] = useState()
+  const [assignedPages, setAssignedPages] = useState()
+  const [basePages, setBasePages] = useState()
 
   const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
     ModalContext
@@ -19,15 +21,21 @@ const TranslatorDetails = () => {
 
     const { translatorID } = useParams();
   // const match = useRouteMatch();
+  console.log(assignedPages)
 
   useEffect(() => {
     let url = `https://wdys.herokuapp.com/translators/${userId}/${translatorID}`
     Axios
     .get(url)
-    .then((res) => setTranslatorDetails(res.data.translator))
+    .then((res) => {
+      setTranslatorDetails(res.data.translator);
+      setAssignedPages(res.data.assignedPages);
+      setBasePages(res.data.basepages);
+      })
+    .catch((err) => console.log(err))
   }, [])
 
-  console.log(translatorDetails)
+  // console.log(translatorDetails)
 
   return (
     <>
@@ -80,7 +88,11 @@ const TranslatorDetails = () => {
       <div className="column-right">
         <div className="title-gray">Assigned pages</div>
         <div>
-          <AssignedTranslatorsTM />
+          <AssignedPagesTR 
+            translatorDetails={translatorDetails} 
+            assignedPages={assignedPages} 
+            basePages={basePages}
+            />
         </div>
       </div>
     </div>}

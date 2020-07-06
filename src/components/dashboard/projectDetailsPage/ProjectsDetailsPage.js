@@ -23,9 +23,6 @@ const ProjectDetailsPage = () => {
   const [translators, setTranslators] = useState()
   const [baseProject, setBaseProject] = useState()
 
-
-
-
   useEffect(() => {
     Axios
     .get(`https://wdys.herokuapp.com/projects/${projID.params.projID}/${userId}/${basePageID.params.basePageID}`)
@@ -40,7 +37,7 @@ const ProjectDetailsPage = () => {
     .catch((err) => console.log(err))
   }, [basePageID.params.basePageID, projID.params.projID,  setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
 
-  console.log(translationPages)
+  // console.log(translationPages)
   return (
     <>
     {basePage &&  baseProject && translators && translationPages &&
