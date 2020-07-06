@@ -15,7 +15,6 @@ const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
    const open = Boolean(anchorEl);
 
   // router url parameters
-  // const { userID } = useParams();
   const match = useRouteMatch();
   return (
     <div className="card">

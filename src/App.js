@@ -23,7 +23,7 @@ const App = () => {
   const [userProjects, setUserProjects] = useState([]);
   const [langs, setLangs] = useState([{lang: "ger", langname: "German"}]);
   const [projectCounter, setProjectCounter] = useState();
-  const [translatorCounter, setTranslatorCounter] = useState();
+  const [translatorCounter, setTranslatorCounter] = useState(0);
   const [assignTranslatorTranslationPages, setAssignTranslatorTranslationPages] = useState()
   const [assignTranslatorTranslators, setAssignTranslatorTranslators] = useState()
 
