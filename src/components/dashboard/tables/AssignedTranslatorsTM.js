@@ -5,7 +5,6 @@ import "../tables/Tables.css";
 var uniqid = require('uniqid');
 
 const AssignedTranslatorsTM = ({translators, translationpages}) => {
-console.log(translationpages)
   return (
     <>
       <div className="assigned-trans-TM table-grid header">

@@ -11,21 +11,22 @@ const Translator = () => {
   
     const [translators, setTranslators] = useState([]);
     const { userId } = useContext(UserContext);
-    const { translatorCounter } = useContext(ModalContext);
+    const { translatorCounter, setTranslatorCounter } = useContext(ModalContext);
 
     // API call to load the Tranlator's section for TM
   useEffect(() => {
-    if (translators.length !== translatorCounter) {
+    if (translators.length === 0) {
     let url = `https://wdys.herokuapp.com/translators/${userId}/initial`
     Axios
     .get(url, {headers: {'Content-Type':'application/json'}})
     .then((res) => { 
         setTranslators(res.data);
+        setTranslatorCounter(1)
     })
     .catch((err) => console.log(err))
   }
     
-  }, [userId, translatorCounter, translators.length]);
+  }, [userId, translatorCounter, translators.length, setTranslatorCounter]);
   
   return (
     <div className="body-project">
