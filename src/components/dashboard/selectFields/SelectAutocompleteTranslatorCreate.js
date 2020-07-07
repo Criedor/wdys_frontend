@@ -26,7 +26,6 @@ const SelectAutocomplete = ({ id, getLangs}) => {
         id={id}
         options={langs.map((option) => option.langname)}
         defaultValue={[langs[1].langname]}
-        freeSolo
         onChange={(e,l)=>getLangs(l)}
         renderTags={(value, getTagProps) =>
           value.map((option, index) => (

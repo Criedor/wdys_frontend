@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Sidebar from "./sidebar/Sidebar";
@@ -14,8 +14,7 @@ import ProjectDetails from "./projectDetails/ProjectDetails";
 import Projects from "./project/Projects";
 import Translation from "./translation/Translation";
 import Compare from "./compare/Compare";
-import UserContext from "../../contexts/UserContext";
-import Axios from "axios";
+
 
 import "./Dashboard.css";
 
@@ -44,19 +43,6 @@ const inputTheme500 = createMuiTheme({
 
 const Dashboard = () => {
 
-const { userId, setUserProjects, projectCounter, setProjectCounter } = useContext(UserContext);
-
- // API call to load the Projects section
-  useEffect(() => {
-    let url = `https://wdys.herokuapp.com/initial/${userId}`
-    Axios
-    .get(url, {headers: {'Content-Type':'application/json'}})
-    .then((res) => { 
-      setUserProjects(res.data.userprojects);
-      setProjectCounter(res.data.userprojects.length)
-    })
-    .catch((err) => console.log(err))
-  }, [userId, projectCounter, setUserProjects, setProjectCounter]);
 
   return (
     <div className="dashboard">

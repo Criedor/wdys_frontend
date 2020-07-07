@@ -8,7 +8,7 @@ import "./Modal.css";
 
 const DeleteProject = () => {
   const { setModal, setModalOption, modalObject } = useContext(ModalContext);
-  const { userId, projectCounter, setProjectCounter } = useContext(UserContext);
+  const { userId, setProjectCounter } = useContext(UserContext);
   const history = useHistory()
 
 
@@ -20,7 +20,7 @@ const DeleteProject = () => {
       .then((res) => { 
         setModal(0);
         setModalOption(1);
-        setProjectCounter(projectCounter-1);
+        setProjectCounter(0);
         history.push('/projects')
       })
       .catch((err) => console.log(err))
