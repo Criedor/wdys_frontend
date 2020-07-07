@@ -28,7 +28,6 @@ const SelectAutocompleteEdit = ({ id, getLangs, projectlangs }) => {
         id={id}
         options={langs.map((option) => option.langname)}
         defaultValue={projectlangs}
-        freeSolo={false}
         onChange={(e,l)=>{;getLangs(l)}}
         renderTags={(value, getTagProps) =>
           value.map((option, index) =>  

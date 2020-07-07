@@ -14,7 +14,7 @@ import "../Dashboard.css";
 const ProjectCreate = () => {
   const history = useHistory()
   const {userId, setProjectCounter} = useContext(UserContext)
-  const [selectedLangs, setSelectedLangs] = useState()
+  const [selectedLangs, setSelectedLangs] = useState(["English"])
 
   
   const getLangs = (LangsInput) => {
@@ -23,10 +23,11 @@ const ProjectCreate = () => {
 
   const create = (e)=>{
     e.preventDefault()
-    
+
     Axios
-      .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline": moment(e.target[4].value, "DD-MM-YYYY").format("YYYY-MM-DD"), "owner_id": userId})
+      .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline": moment(e.target[5].value, "DD-MM-YYYY").format("YYYY-MM-DD"), "owner_id": userId})
       .then((res) => { 
+          console.log(res)
           setProjectCounter(0)
           history.push("/projects")
       })
@@ -37,7 +38,7 @@ const ProjectCreate = () => {
   return (
     <div className="body-project-create">
       <div className="col-center-full">
-        <form onSubmit={(e)=>create(e)}>
+        <form onSubmit={(e)=>{create(e)}} onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}>
           <div className="field-wrapper">
             <h1>Create a Project</h1>
             <label htmlFor="proj-create-name">Project Name </label>
@@ -49,7 +50,7 @@ const ProjectCreate = () => {
             />
           </div>
           <div className="field-wrapper">
-            <label htmlFor="proj-create-base-lang">Select Language(s) * </label>
+            <label htmlFor="proj-create-base-lang">Select Baselanguage * </label>
             <SelectField id={"proj-create-base-lang"} />
           </div>
           <div htmlFor="proj-base-lang" className="field-wrapper">

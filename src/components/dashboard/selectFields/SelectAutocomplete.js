@@ -22,19 +22,19 @@ const SelectAutocomplete = ({ id, getLangs}) => {
     
     <div className={classes.root}>
       <Autocomplete
+        
         multiple
         id={id}
         options={langs.map((option) => option.langname)}
         defaultValue={[langs[1].langname]}
-        freeSolo
-        onChange={(e,l)=>getLangs(l)}
+        onChange={(e,l)=>{e.preventDefault(); getLangs(l)}}
         renderTags={(value, getTagProps) =>
           value.map((option, index) => (
             <Chip key={index} variant="outlined" label={option} {...getTagProps({ index })} />
           ))
         }
         renderInput={(params) => (
-          <TextField  {...params} variant="standard" placeholder="search" />
+          <TextField  onChange={(e)=>e.preventDefault()} {...params} variant="standard" placeholder="search" />
         )}
       />
     </div>
