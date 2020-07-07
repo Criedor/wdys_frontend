@@ -11,7 +11,7 @@ import Axios from 'axios'
 import "../Dashboard.css";
 
 const ProjectDetails = () => {
-  const { setModal, setModalOption } = useContext(ModalContext);
+  const { setModal, setModalOption,setModalObject } = useContext(ModalContext);
   const { userId } = useContext(UserContext);
   const { projID } = useParams();
   const [projectdata, setProjectdata] = useState();
@@ -64,10 +64,11 @@ const ProjectDetails = () => {
               </MenuItem>
             </Link>
             <MenuItem
-              onClick={() => {
+              onClick={(e) => {
                 setModal(1);
                 setModalOption(3);
                 setAnchorEl(false);
+                setModalObject(projectdata._id)
               }}
             >
               Delete

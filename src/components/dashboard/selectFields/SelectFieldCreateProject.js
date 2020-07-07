@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { MenuItem, Select, FormControl } from "@material-ui/core";
 import UserContext from '../../../contexts/UserContext'
+var uniqid = require('uniqid');
 
 
 const SelectFieldTranslationPages = ({ id,selectedTranslationPage }) => {
@@ -16,7 +17,7 @@ const SelectFieldTranslationPages = ({ id,selectedTranslationPage }) => {
           defaultValue={langs[1].langname}
           >
           {langs.map((lang) => (
-            <MenuItem key={lang.pagename} value={lang.langname} id={lang._id}>
+            <MenuItem key={uniqid()} value={lang.langname} id={lang._id}>
               {lang.langname}
             </MenuItem>
           ))}

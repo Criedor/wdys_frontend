@@ -15,7 +15,6 @@ const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
    const open = Boolean(anchorEl);
 
   // router url parameters
-  // const { userID } = useParams();
   const match = useRouteMatch();
   return (
     <div className="card">
@@ -39,12 +38,11 @@ const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
           onClose={(e) => setAnchorEl(false)}
         >
           <MenuItem
-            id={id}
             onClick={(e) => {
               setModal(1);
               setModalOption(4);
               setAnchorEl(false);
-              setModalObject(e.currentTarget.id)
+              setModalObject(id)
             }}
           >
             Remove

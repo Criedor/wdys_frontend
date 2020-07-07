@@ -5,6 +5,7 @@ import SelectField from "../selectFields/SelectFieldCreateProject";
 import SelectAutocomplete from "../selectFields/SelectAutocomplete";
 import DatePicker from "../selectFields/DatePicker";
 import Axios from 'axios'
+import moment from 'moment'
 import "../Dashboard.css";
 
 
@@ -14,6 +15,7 @@ const ProjectCreate = () => {
   const history = useHistory()
   const {userId, setProjectCounter} = useContext(UserContext)
   const [selectedLangs, setSelectedLangs] = useState()
+
   
   const getLangs = (LangsInput) => {
     setSelectedLangs(LangsInput)
@@ -21,8 +23,9 @@ const ProjectCreate = () => {
 
   const create = (e)=>{
     e.preventDefault()
+    
     Axios
-      .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline":e.target[4].value, "owner_id": userId})
+      .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline": moment(e.target[4].value, "DD-MM-YYYY").format("YYYY-MM-DD"), "owner_id": userId})
       .then((res) => { 
           setProjectCounter(0)
           history.push("/projects")

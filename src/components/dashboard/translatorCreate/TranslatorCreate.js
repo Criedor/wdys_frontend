@@ -8,9 +8,9 @@ import "../Dashboard.css";
 
 const TranslatorCreate = () => {
   const history = useHistory()
-  const {userId } = useContext(UserContext)
-  const { setTranslatorCounter,translatorCounter } = useContext(ModalContext)
-  const [selectedLangs, setSelectedLangs] = useState()
+  const {userId, langs } = useContext(UserContext)
+  const { setTranslatorCounter } = useContext(ModalContext)
+  const [selectedLangs, setSelectedLangs] = useState([])
   
   const getLangs = (LangsInput) => {
     setSelectedLangs(LangsInput)
@@ -18,10 +18,11 @@ const TranslatorCreate = () => {
 
   const create = (e)=>{
     e.preventDefault()
+    
     Axios
-      .post(`https://wdys.herokuapp.com/translators/create`,{"email":e.target[1].value, "translator_langs":selectedLangs, "displayname":e.target[0].value, "user_id":userId})
+      .post(`https://wdys.herokuapp.com/translators/create`,{"email":e.target[1].value, "translator_langs":selectedLangs.length===0?langs[1].langname:selectedLangs, "displayname":e.target[0].value, "user_id":userId})
       .then((res) => { 
-          setTranslatorCounter(translatorCounter-1)
+          setTranslatorCounter(0)
           history.push("/translators")
       })
       .catch((err) => console.log(err))
