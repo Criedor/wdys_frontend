@@ -39,7 +39,7 @@ const ProjectDetailsPage = () => {
     .catch((err) => console.log(err))
   }, [basePageID.params.basePageID, projID.params.projID,  setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
 
-  // console.log(translationPages)
+
   return (
     <>
     {basePage &&  baseProject && translators && translationPages &&

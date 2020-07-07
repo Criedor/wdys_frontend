@@ -82,7 +82,7 @@ const Dashboard = () => {
 
           <Route
             exact
-            path="/projects/:projID/:basePageID/compare"
+            path="/projects/:projID/:basePageID/:pageID/compare"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
                 <Compare {...props} />
