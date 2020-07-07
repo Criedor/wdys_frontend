@@ -22,13 +22,21 @@ const Project = () => {
    }, [userId, projectCounter, setUserProjects, setProjectCounter, userProjects.length]);
   
 
-  
+
   return (
+    <>
     <div className="body-project">
+  {userProjects.length !== 0 ?
+    <>
     {userProjects.map(project => 
         <CardProjects key={uniqid()} id={project._id} projectname={project.projectname} baselang={project.baselang} langs={project.langs} deadline={project.deadline}/>
       )}
+    </>
+    :
+    <div>Looks like you have no projects yet</div>
+    }
     </div>
+    </>
   );
 };
 

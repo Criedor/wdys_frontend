@@ -1,6 +1,7 @@
 import React from "react";
 import {Link, useParams} from 'react-router-dom'
 import { Visibility } from "@material-ui/icons";
+import { ReactComponent as AddPage } from './add-page.svg'
 import "../tables/Tables.css";
 var uniqid = require('uniqid');
 
@@ -17,7 +18,13 @@ const ProjectPagesTM = ( {projectpages}) => {
       </div>
       :
       <div className="no-table">
-        This project has no pages yet. To create a new page for this project, go to the page you want to add. Start the WDYS chrome extension, select this project and take a snapshot!
+        <AddPage style={{maxWidth: '400px'}}/>
+        <p>
+          To create a new page for this project, navigate to the URL of the page you want to add. 
+          Start the &#123; wdys &#125; chrome extension, select this project's name and take a snapshot!
+
+          Then come back her to see the list of your project pages.
+        </p>
       </div>}
       {projectpages &&
         projectpages.map((page) => (

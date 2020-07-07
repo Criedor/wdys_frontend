@@ -4,7 +4,6 @@ import UserContext from "../contexts/UserContext";
 import Cookies from "js-cookie";
 import Axios from "axios"
 
-
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { setUserId, setUserName, setRole } = useContext(UserContext);
 

@@ -1,0 +1,7 @@
+
+/               /
+/projects       /projects
+/translators    /translators 
+/translation    /translation
+/projects/*     /projects
+/translators/*     /translators

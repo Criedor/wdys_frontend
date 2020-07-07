@@ -78,18 +78,21 @@ label {
     display: grid;
     grid-template-columns: repeat(3, minmax(280px, 380px));
     column-gap: 1.875em;
+    grid-template-rows: 260px;
+    column-gap: 1.875em;
+    row-gap: 1.875em;
 }
 
 /* Grid for ProjectDetails.js */
 
 .body-project-details {
     display: grid;
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: 380px 730px;
     column-gap: 1.875em;
 }
 
-/* Grid for ProjectCreate.js */
 
+/* Grid for ProjectCreate.js */
 .body-project-create {
     display: grid;
     grid-template-columns: 500px;
