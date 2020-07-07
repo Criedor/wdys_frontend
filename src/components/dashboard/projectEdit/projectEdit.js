@@ -41,7 +41,7 @@ const ProjectEdit = () => {
     console.log({user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: e.currentTarget[4].value})
 
     Axios
-    .put(`http://wdys.herokuapp.com/projects/${match.params.projID}/update`, {user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: moment(e.currentTarget[4].value,"DD-MM-YYYY").format("YYYY-MM-DD")})
+    .put(`https://wdys.herokuapp.com/projects/${match.params.projID}/update`, {user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: moment(e.currentTarget[4].value,"DD-MM-YYYY").format("YYYY-MM-DD")})
     .then((res) => { 
       console.log(res)
       history.push(`/projects/${project._id}`)
