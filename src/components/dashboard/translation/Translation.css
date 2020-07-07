@@ -3,9 +3,23 @@
 }
 
 .page-info {
-    margin: 1em 0;
+    margin: 1.875em 0;
 }
 
 .mt0 {
     margin-top: 0;
+}
+
+.mt30 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    height: 20vh;
+}
+
+.page-description {
+    min-height: 100px;
+    background-color: rgba(200, 200, 200, 0.2);
+    border-radius: 10px;
 }
