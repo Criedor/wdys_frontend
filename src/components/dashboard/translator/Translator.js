@@ -1,6 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-// import { useRouteMatch } from "react-router-dom";
-// import CardProjects from "../cards/CardProjects";
 import CardTranslators from "../cards/CardTranslators";
 import UserContext from "../../../contexts/UserContext";
 import ModalContext from "../../../contexts/ModalContext";
@@ -15,13 +13,13 @@ const Translator = () => {
 
     // API call to load the Tranlator's section for TM
   useEffect(() => {
-    if (translators.length === 0) {
+    if (translatorCounter === 0) {
     let url = `https://wdys.herokuapp.com/translators/${userId}/initial`
     Axios
     .get(url, {headers: {'Content-Type':'application/json'}})
     .then((res) => { 
         setTranslators(res.data);
-        setTranslatorCounter(1)
+        setTranslatorCounter(res.data.length)
     })
     .catch((err) => console.log(err))
   }

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useHistory } from 'react-router-dom'
 import ModalContext from "../../contexts/ModalContext";
 import UserContext from "../../contexts/UserContext";
 import { Icon } from "@material-ui/core";
@@ -9,6 +10,7 @@ const RemoveTranslator = () => {
   // modalObject ids the translator's ID
   const { setModal, setModalOption, modalObject, setTranslatorCounter} = useContext(ModalContext);
   const { userId } = useContext(UserContext);
+  const history = useHistory()
   
   const removeTranslator = (e)=>{
     e.preventDefault()
@@ -19,6 +21,7 @@ const RemoveTranslator = () => {
         setModal(0);
         setModalOption(1);
         setTranslatorCounter(0)
+        history.push('/translators')
       })
       .catch((err) => console.log(err))
   }

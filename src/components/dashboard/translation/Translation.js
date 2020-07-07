@@ -37,12 +37,14 @@ const Translation = () => {
         <div className="title-gray">
             Assigned Pages
         </div>
-        <div className="assigned-proj-TR header table-grid">
-          <div>Page Name</div>
+        {pages.length>0?<div className="assigned-proj-TR header table-grid">
+        <div>Page Name</div>
           <div>Translation language</div>
           <div>Deadline</div>
           <div>View</div>
-        </div>
+        </div>:
+        <div className="mt30">There are currently no pages assigned to you.</div>
+        }
         {pages.map((item) => (
           <div className="assigned-proj-TR table-grid" key={item.projectname}>
             <div>{item.pagename}</div>

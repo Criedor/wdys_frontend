@@ -6,7 +6,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/picke
 
 const DatePickerEdit = ({ id, currentDeadline }) => {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(currentDeadline);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -18,10 +18,10 @@ const DatePickerEdit = ({ id, currentDeadline }) => {
       <Grid container justify="space-around">
         <KeyboardDatePicker 
           variant="inline"
-          format="DD/MM/YYYY"
+          format="DD-MM-YYYY"
           margin="normal"
           id={id}
-          value={!currentDeadline?selectedDate:currentDeadline}
+          value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',

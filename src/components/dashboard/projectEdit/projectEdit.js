@@ -6,6 +6,7 @@ import { FormControl } from "@material-ui/core";
 import ProjectPagesTM from "../tables/ProjectPagesTM";
 import UserContext from '../../../contexts/UserContext'
 import Axios from 'axios'
+import moment from 'moment'
 import "../Dashboard.css";
 
 const ProjectEdit = () => {
@@ -37,8 +38,10 @@ const ProjectEdit = () => {
     if (e.currentTarget[0].value) {changeProjectName = e.currentTarget[0].value}
     else changeProjectName = project.projectname
     
+    console.log({user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: e.currentTarget[4].value})
+
     Axios
-    .put(`http://wdys.herokuapp.com/projects/${match.params.projID}/update`, {user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: e.currentTarget[4].value })
+    .put(`http://wdys.herokuapp.com/projects/${match.params.projID}/update`, {user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: moment(e.currentTarget[4].value,"DD-MM-YYYY").format("YYYY-MM-DD")})
     .then((res) => { 
       console.log(res)
       history.push(`/projects/${project._id}`)
@@ -85,7 +88,7 @@ const ProjectEdit = () => {
             <FormControl>
               <div className="field-wrapper">
                 <label htmlFor={"proj-details-deadline"}>Deadline </label>
-                <DatePickerEdit id={"proj-details-deadline"} currentDeadline={project.deadline}/>
+                <DatePickerEdit id={"proj-details-deadline"} currentDeadline={moment(project.deadline).format("DD-MM-YYYY")}/>
               </div>
             </FormControl>
             <div className="field-wrapper">
