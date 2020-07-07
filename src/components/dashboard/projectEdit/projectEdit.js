@@ -86,7 +86,7 @@ const ProjectEdit = () => {
             <FormControl>
               <div className="field-wrapper">
                 <label htmlFor={"proj-details-deadline"}>Deadline </label>
-                <DatePickerEdit id={"proj-details-deadline"} currentDeadline={moment(project.deadline).format("DD-MM-YYYY")}/>
+                <DatePickerEdit id={"proj-details-deadline"} currentDeadline={project.deadline}/>
               </div>
             </FormControl>
             <div className="field-wrapper">

@@ -4,15 +4,16 @@ import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
 
+
 const DatePickerEdit = ({ id, currentDeadline }) => {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = useState(currentDeadline);
+  const [selectedDate, setSelectedDate] = useState(currentDeadline? currentDeadline: Date.now());
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
-
+  console.log(selectedDate)
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">

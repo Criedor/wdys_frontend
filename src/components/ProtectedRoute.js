@@ -19,7 +19,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     })
     .catch((err) => {
 
-        return <Route to={{pathname: "/"}}/>
+        return <Route to={{pathname: "./"}}/>
       })
   };
   
