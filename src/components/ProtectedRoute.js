@@ -1,5 +1,5 @@
 import React, { useContext} from "react";
-import { Route, useHistory, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import Cookies from "js-cookie";
 import Axios from "axios"
@@ -7,7 +7,6 @@ import Axios from "axios"
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { setUserId, setUserName, setRole } = useContext(UserContext);
-  const history = useHistory()
 
   const login = () => {
   
