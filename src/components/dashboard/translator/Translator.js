@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import CardTranslators from "../cards/CardTranslators";
 import UserContext from "../../../contexts/UserContext";
 import ModalContext from "../../../contexts/ModalContext";
+import { ReactComponent as AddTranslator } from './add-translator.svg'
 import Axios from "axios";
 let uniqid = require('uniqid');
 
@@ -27,6 +28,8 @@ const Translator = () => {
   }, [userId, translatorCounter, translators.length, setTranslatorCounter]);
   
   return (
+    <>
+    {translators.length !== 0 ?
     <div className="body-project">
       {translators.map(translator => 
         <CardTranslators 
@@ -37,8 +40,16 @@ const Translator = () => {
         transEmail={translator.email}
         />
       )}
-    
     </div>
+    :
+    <div className='no-table'>
+        <div className='center'>
+          <AddTranslator style={{maxWidth: '400px', maxHeight: '300px'}}/>
+          <p className='center'>Looks like you have no translators yet, get started by adding one.</p>
+        </div>
+      </div>
+}
+    </>
   );
 };
 
