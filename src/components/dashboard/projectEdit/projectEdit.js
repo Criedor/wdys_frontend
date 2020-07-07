@@ -37,8 +37,6 @@ const ProjectEdit = () => {
 
     if (e.currentTarget[0].value) {changeProjectName = e.currentTarget[0].value}
     else changeProjectName = project.projectname
-    
-    console.log({user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: e.currentTarget[4].value})
 
     Axios
     .put(`https://wdys.herokuapp.com/projects/${match.params.projID}/update`, {user_id: userId, projectname: changeProjectName, langs: changeProjectLangs, deadline: moment(e.currentTarget[4].value,"DD-MM-YYYY").format("YYYY-MM-DD")})

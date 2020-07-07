@@ -12,12 +12,9 @@ const TranslatorDetails = () => {
   const [translatorDetails, setTranslatorDetails] = useState()
   const [assignedPages, setAssignedPages] = useState()
   const [basePages, setBasePages] = useState()
-
   const { setModal, setModalOption, anchorEl, setAnchorEl, open,setModalObject } = useContext(ModalContext);
-
   const { userId } = useContext(UserContext);
   const {translatorID} = useParams();
-
 
   useEffect(() => {
     let url = `https://wdys.herokuapp.com/translators/${userId}/${translatorID}`

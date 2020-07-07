@@ -13,7 +13,7 @@ const Translator = () => {
 
     // API call to load the Tranlator's section for TM
   useEffect(() => {
-    if (translatorCounter === 0) {
+    if (translators.length === 0 || translatorCounter === 0 ) {
     let url = `https://wdys.herokuapp.com/translators/${userId}/initial`
     Axios
     .get(url, {headers: {'Content-Type':'application/json'}})
