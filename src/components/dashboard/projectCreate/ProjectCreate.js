@@ -23,9 +23,9 @@ const ProjectCreate = () => {
 
   const create = (e)=>{
     e.preventDefault()
-       
+    
     Axios
-      .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline":moment(e.target[4].value,"DD/MM/YYYY").format("DD-MM-YYYY"), "owner_id": userId})
+      .post(`https://wdys.herokuapp.com/projects/create`,{"projectname":e.target[0].value, "langs":selectedLangs, "baselang":e.target[1].value, "deadline": moment(e.target[4].value, "DD-MM-YYYY").format("YYYY-MM-DD"), "owner_id": userId})
       .then((res) => { 
           setProjectCounter(0)
           history.push("/projects")

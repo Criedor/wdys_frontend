@@ -38,12 +38,11 @@ const CardTranslators = ({ transName, transLangs, transEmail, id }) => {
           onClose={(e) => setAnchorEl(false)}
         >
           <MenuItem
-            id={id}
             onClick={(e) => {
               setModal(1);
               setModalOption(4);
               setAnchorEl(false);
-              setModalObject(e.currentTarget.id)
+              setModalObject(id)
             }}
           >
             Remove

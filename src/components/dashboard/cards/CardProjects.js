@@ -44,13 +44,12 @@ const CardProjects = ( props ) => {
           open={open}
           onClose={(e) => setAnchorEl(false)}
         >
-         {/* <Link to={`${match.url}/${props.id}/update`}> */}
-          <MenuItem                
-                onClick={() => {
-                setAnchorEl(false);
-                history.push(url)
-              }}
-            >
+         <MenuItem                
+          onClick={() => {
+          setAnchorEl(false);
+          history.push(url)
+          }}
+          >
               Edit
             </MenuItem>
           {/* </Link>           */}

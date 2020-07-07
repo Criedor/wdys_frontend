@@ -13,15 +13,11 @@ const TranslatorDetails = () => {
   const [assignedPages, setAssignedPages] = useState()
   const [basePages, setBasePages] = useState()
 
-  const { setModal, setModalOption, anchorEl, setAnchorEl, open } = useContext(
-    ModalContext
-  );
+  const { setModal, setModalOption, anchorEl, setAnchorEl, open,setModalObject } = useContext(ModalContext);
 
   const { userId } = useContext(UserContext);
+  const {translatorID} = useParams();
 
-    const { translatorID } = useParams();
-  // const match = useRouteMatch();
-  console.log(assignedPages)
 
   useEffect(() => {
     let url = `https://wdys.herokuapp.com/translators/${userId}/${translatorID}`
@@ -63,6 +59,7 @@ const TranslatorDetails = () => {
               onClick={() => {
                 setModal(1);
                 setModalOption(4);
+                setModalObject(translatorDetails._id)
                 setAnchorEl(false);
               }}
             >

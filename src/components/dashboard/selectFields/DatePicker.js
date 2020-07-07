@@ -12,14 +12,12 @@ const DatePicker = ({ id }) => {
     setSelectedDate(date);
   };
 
-  // console.log({selectDate: id})
-
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
         <KeyboardDatePicker 
           variant="inline"
-          format="DD/MM/YYYY"
+          format="DD-MM-YYYY"
           margin="normal"
           id={id}
           value={selectedDate}

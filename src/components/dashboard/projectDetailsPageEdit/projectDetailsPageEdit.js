@@ -81,7 +81,7 @@ const ProjectDetailsPageEdit = () => {
             <FormControl>
               <div className="field-wrapper">
                 <label htmlFor={"proj-details-page-deadline"}>Deadline </label>
-                  <div className="custom-result"> {moment(baseProject.deadline).format('DD-MM-YYYY')} </div>
+                  <div className="custom-result"> {moment(baseProject.deadline, "DD/MM/YYYY").format('DD-MM-YYYY')} </div>
               </div>
             </FormControl>
             <FormControl>

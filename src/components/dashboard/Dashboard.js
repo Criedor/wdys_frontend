@@ -105,7 +105,6 @@ const { userId, setUserProjects, projectCounter, setProjectCounter } = useContex
           />
 
           <Route
-            exact
             path="/projects/:projID/:basePageID/update"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
@@ -115,7 +114,6 @@ const { userId, setUserProjects, projectCounter, setProjectCounter } = useContex
           />
 
           <Route
-            exact
             path="/projects/:projID/:basePageID"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
@@ -125,7 +123,6 @@ const { userId, setUserProjects, projectCounter, setProjectCounter } = useContex
           />
 
           <Route
-            exact
             path="/translators/:translatorID"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
@@ -140,7 +137,6 @@ const { userId, setUserProjects, projectCounter, setProjectCounter } = useContex
           />
 
           <Route
-            exact
             path="/projects/:projID"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>

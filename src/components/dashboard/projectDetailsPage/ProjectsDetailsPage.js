@@ -10,7 +10,7 @@ import Axios from 'axios'
 import "../Dashboard.css";
 
 const ProjectDetailsPage = () => {
-  const { setModal, setModalOption} = useContext(ModalContext);
+  const { setModal, setModalOption,setModalObject} = useContext(ModalContext);
   const { userId, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators } = useContext(UserContext);
 
   
@@ -45,7 +45,7 @@ const ProjectDetailsPage = () => {
     {basePage &&  baseProject && translators && translationPages &&
     <div className="body-project-details">
       <div className="col-left-380">
-        <div className="title-gray">
+        <div className="title-gray" >
           {basePage.pagename}
           <Button
             aria-controls="fade-menu"
@@ -72,10 +72,11 @@ const ProjectDetailsPage = () => {
               </MenuItem>
             </Link>
             <MenuItem
-              onClick={() => {
+              onClick={(e) => {
                 setModal(1);
-                setModalOption(3);
+                setModalOption(6);
                 setAnchorEl(false);
+                setModalObject(basePage._id)
               }}
             >
               Delete
