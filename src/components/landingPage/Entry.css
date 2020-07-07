@@ -1,8 +1,11 @@
 .entry {
+    display: grid;
+    grid-column: 2 / 3;
+    grid-template-rows: 150px 100px 600px;
     text-align: center;
     color: #3F3D56;
     padding-top: 5em;
-    
+
 }
 
 .entry h1 {
@@ -13,4 +16,11 @@
 .entry h3 {
     font-weight: 400;
     font-size: 1.875rem;
+}
+
+.entry-2col {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
