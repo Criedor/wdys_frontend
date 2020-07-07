@@ -2,7 +2,7 @@
   display: grid;
   grid-column: 1 / span 3;
   grid-template-columns: 1fr minmax(280px, 1140px) 1fr;
-  grid-template-rows: 100vh;
+  height: 100vh;
 }
 
 a {
@@ -13,4 +13,8 @@ a {
 li a:hover,
 a:hover {
   text-decoration: none;
+}
+
+.light-50 {
+  color: rgba(0,0,0,0.5);
 }
