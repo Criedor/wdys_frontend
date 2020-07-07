@@ -1,7 +1,7 @@
 .entry {
     display: grid;
     grid-column: 2 / 3;
-    grid-template-rows: 150px 100px 600px;
+    grid-template-rows: 150px 100px;
     text-align: center;
     color: #3F3D56;
     padding-top: 5em;
@@ -19,8 +19,45 @@
 }
 
 .entry-2col {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    padding: 2em 1em;
+    display: grid;
+    grid-column: 2 / 3;
+    grid-template-columns: repeat( auto-fit, minmax(400px, 1fr) );
+    row-gap: 2em;
+    column-gap: 2em;
+    justify-items: center;
+
+}
+
+.entry-1col {
+    display: grid;
+    grid-column: 2 / 3;
+    justify-items: center;
+}
+
+.entry-2col > div {
+    margin-bottom: 2em;
+}
+
+.issue {
+    background: url('images/issue.svg') center no-repeat ;
+    background-size: conatin;
+    padding: 5em;
+    display: grid;
+    align-items: center;
+}
+
+.issue-manager {
+    color: #3F3D56;
+}
+
+.issue h1 {
+    color: #3F3D56;
+    font-weight: 400;
+}
+
+.entry-1col h1 {
+    font-size: 3em;
+    /* margin-bottom: 0; */
+    font-weight: 500;
 }
