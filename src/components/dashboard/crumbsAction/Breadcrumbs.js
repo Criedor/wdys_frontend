@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Montserrat, sans-serif",
     fontWeight: 400,
     fontSize: "0.875rem",
+    cursor: "pointer"
   },
   text: {
     color: "#333",
