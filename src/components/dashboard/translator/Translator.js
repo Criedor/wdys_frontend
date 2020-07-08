@@ -45,7 +45,7 @@ const Translator = () => {
     <div className='no-table'>
         <div className='center'>
           <AddTranslator style={{maxWidth: '400px', maxHeight: '300px'}}/>
-          <p className='center'>Looks like you have no translators yet, get started by adding one.</p>
+          <p className='center'>Looks like you have not assigned any translators yet, get started by adding one.</p>
         </div>
       </div>
 }

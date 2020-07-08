@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
+import GetAppIcon from '@material-ui/icons/GetApp';
 import Axios from 'axios'
 import "../cards/Card.css";
 import "../tables/Tables.css";
@@ -38,7 +39,9 @@ const Compare = () => {
     <div className="body-compare">
       <div className="title-gray title-green  white">
         <div>{translationPage.pagename}</div>
-        <div className="white" onClick={()=>downloadJson()}><a href="" className="white download" id="downloadAnchorElem">Download as JSON</a></div>
+        <div className="white" onClick={()=>downloadJson()}>
+          <a href="./" className="white download" id="downloadAnchorElem"><GetAppIcon /></a>
+        </div>
         </div>
         <div className="compare">
             <div className="title-gray">
@@ -49,12 +52,39 @@ const Compare = () => {
             </div>
             {compare.map((item) => (
               <>
-              <div className={`compare-txt }`} key={uniqid()}>
-            {item.depth>0?<div className="child" >→</div>:""}{item.baseText}
+              {item.depth>0? null :
+              <div className='compare-txt' key={uniqid()}>
+                {item.baseText}
+              </div>}
+
+              {/* <div className='baseText'>
+                <div className='compare-txt'key={uniqid()}>
+                  {item.baseText}
+                </div>
+              
+                {item.depth>0?<div className="compare-txt child">
+                  {item.baseText}
+                </div>:""}
               </div>
-              <div className={`compare-txt ${item.depth>0?"child":""}`} key={uniqid()}>
+
+              <div className='compareText'>
+                <div className='compare-txt'key={uniqid()}>
+                  {item.translation}
+                </div>
+              
+                {item.depth>0?<div className="compare-txt child">
+                  {item.translation}
+                </div>:""}
+              </div> */}
+
+              {item.depth>0? null :
+              <div className='compare-txt' key={uniqid()}>
                 {item.translation}
-              </div>
+              </div>}
+
+              {/* <div className={`compare-txt ${item.depth>0?"child":""}`} key={uniqid()}>
+                {item.translation}
+              </div> */}
               </>
             ))}
           </div>

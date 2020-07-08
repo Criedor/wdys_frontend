@@ -67,7 +67,7 @@ const Translation = () => {
         </div>
 
         <div className="card-translation ">
-          <div className="card-top green-bg">
+          <div className="card-top green-bg font20">
              {page.pagename}
           </div>
           <div className="card-bottom ">

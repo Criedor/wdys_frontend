@@ -18,14 +18,6 @@
     grid-template-columns: 6fr 6fr 1fr;
 }
 
-.compare {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: auto;
-    margin-top: 20px;
-    grid-column-gap: 1.5em;
-  }
-
 .center {
     text-align: center;
 }
