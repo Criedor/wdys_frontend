@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Visibility } from "@material-ui/icons";
 import "../tables/Tables.css";
 let uniqid = require('uniqid');
 
 const AssignedTranslatorsTM = ({translators, translationpages}) => {
+const {projID} = useParams()
+
+
   return (
     <>
       <div className="assigned-trans-TM table-grid header">
@@ -25,7 +28,7 @@ const AssignedTranslatorsTM = ({translators, translationpages}) => {
             </div>
           <div>{page.status}</div>
           <div className="center">
-            <Link to={`/projects/${page._id}/${page.base_page_id}/compare`} >
+            <Link to={`/projects/${projID}/${page.base_page_id}/${page._id}/compare`} >
               <Visibility />
             </Link>
           </div>

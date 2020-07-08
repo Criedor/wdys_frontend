@@ -10,6 +10,7 @@ import "../Dashboard.css";
 
 const ProjectDetailsPageEdit = () => {
   const { setModal, setModalOption} = useContext(ModalContext);
+  const { setProjectCounter} = useContext(UserContext);
   const { userId, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators } = useContext(UserContext);
   const projID = useRouteMatch("/projects/:projID/:basePageID");
   const basePageID = useRouteMatch("/projects/:projID/:basePageID")
@@ -41,9 +42,10 @@ const ProjectDetailsPageEdit = () => {
       setAssignTranslatorTranslationPages(res.data.translationpage)
       setAssignTranslatorTranslators(res.data.translators);
       setBaseProject(res.data.baseproject)
+      setProjectCounter(0)
     })
     .catch((err) => console.log(err))
-  }, [basePageID.params.basePageID, projID.params.projID, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
+  }, [basePageID.params.basePageID, projID.params.projID, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, setProjectCounter, userId]);
 
 
   return (

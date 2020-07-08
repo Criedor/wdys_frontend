@@ -2,8 +2,8 @@
     display: grid;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    height: 80px;
-    padding: 0.5em 1em;
+    line-height: 1.5em;
+    padding: 1.5em 1em;
 }
 
 .mt1 {
@@ -13,4 +13,16 @@
 
 .white {
     color: #ffffff;
+}
+
+.child {
+    padding-left: 50px;
+}
+
+.mt30 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    height: 20vh;
 }
