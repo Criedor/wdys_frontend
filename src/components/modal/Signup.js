@@ -59,15 +59,12 @@ const SignIn = () => {
           <input type="password" name="password" />
           <button className="action blue">Sign up</button>
           <p>
-            If you already have an account, please
-            <strong
+            If you already have an account, please <strong
               onClick={() => {
                 setModal(1);
                 setModalOption(1);
               }}
-            >
-              login
-            </strong>
+            > login</strong>
           </p>
         </form>
       </div>
