@@ -14,7 +14,7 @@ const SelectFieldTranslator = ({ id, selectedTranslator }) => {
           id={id}
           autoComplete="true"
           defaultValue=""
-          onChange={(e,c)=>selectedTranslator(e.currentTarget.id)}
+          onChange={(e,c)=>selectedTranslator(c.props.id)}
         >
           {assignTranslatorTranslators.map((translator) => (
             <MenuItem key={translator._id} value={translator.displayname} id={translator._id}>
