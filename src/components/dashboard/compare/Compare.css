@@ -16,7 +16,7 @@
 }
 
 .child {
-    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .mt30 {
@@ -25,4 +25,8 @@
     align-items: center;
     margin-top: 30px;
     height: 20vh;
+}
+
+.download {
+    cursor: pointer;
 }

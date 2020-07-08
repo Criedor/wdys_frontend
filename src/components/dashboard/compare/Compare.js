@@ -13,6 +13,13 @@ const Compare = () => {
   const [translationPage, setTranslationPage] = useState()
   const [compare, setCompare] = useState()
 
+  const downloadJson = () =>{
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(compare, undefined, 2));
+    var dlAnchorElem = document.getElementById('downloadAnchorElem');
+    dlAnchorElem.setAttribute("href",     dataStr     );
+    dlAnchorElem.setAttribute("download", `${translationPage.pagename}.json`);
+  }
+  
   useEffect(()=>{
     Axios
       .get(`https://wdys.herokuapp.com/translation/pages/${pageID}`)
@@ -31,6 +38,7 @@ const Compare = () => {
     <div className="body-compare">
       <div className="title-gray title-green  white">
         <div>{translationPage.pagename}</div>
+        <div className="white" onClick={()=>downloadJson()}><a href="" className="white download" id="downloadAnchorElem">Download as JSON</a></div>
         </div>
         <div className="compare">
             <div className="title-gray">
@@ -41,8 +49,8 @@ const Compare = () => {
             </div>
             {compare.map((item) => (
               <>
-              <div className={`compare-txt ${item.depth>0?"child":""}`} key={uniqid()}>
-                {item.baseText}
+              <div className={`compare-txt }`} key={uniqid()}>
+            {item.depth>0?<div className="child" >→</div>:""}{item.baseText}
               </div>
               <div className={`compare-txt ${item.depth>0?"child":""}`} key={uniqid()}>
                 {item.translation}
