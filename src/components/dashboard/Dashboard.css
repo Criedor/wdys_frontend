@@ -105,6 +105,7 @@ label {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 1.875em;
+    margin-bottom: 5em;
 }
 
 .assign-button {

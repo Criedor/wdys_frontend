@@ -41,7 +41,7 @@ const Translation = () => {
         {pages.length > 0 ?
         <div className="assigned-proj-TR header table-grid">
           <div>Page Name</div>
-          <div>Translation language</div>
+          <div>Base lang</div>
           <div>Deadline</div>
           <div>View</div>
         </div>:
@@ -50,7 +50,7 @@ const Translation = () => {
         {pages.map((item) => (
           <div className="assigned-proj-TR table-grid" key={uniqid()}>
             <div key={uniqid()}>{item.pagename}</div>
-            <div key={uniqid()}>{item.baselang}</div>
+            <div key={uniqid()}>{item.base_lang}</div>
             <div key={uniqid()}>{moment(item.deadline).format('DD-MM-YYYY')}</div>
             <div key={uniqid()} className={`center ${item._id === page._id ? 'green' : ''}`}>
               <Visibility onClick={()=>setPage(item)}/>
@@ -91,6 +91,7 @@ const Translation = () => {
               </Link>
             </div>
           </div>
+          
         </div>
       </div>
 

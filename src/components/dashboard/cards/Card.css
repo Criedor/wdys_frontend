@@ -27,7 +27,7 @@
 
 .card-bottom {
     background-color: #ffffff;
-    height: 160px;
+    height: fit-content;
     padding: 1.875em 1.875em 1em;
 }
 
@@ -45,7 +45,6 @@
 
 
 .card-translation {
-    height: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
