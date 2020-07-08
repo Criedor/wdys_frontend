@@ -12,13 +12,11 @@ const Compare = () => {
   const { pageID } = useParams()
   const [translationPage, setTranslationPage] = useState()
   const [compare, setCompare] = useState()
-  const rows = []
 
   useEffect(()=>{
     Axios
       .get(`https://wdys.herokuapp.com/translation/pages/${pageID}`)
       .then((res) => { 
-        console.log(res)
         setTranslationPage(res.data.translationpage)
         setCompare(res.data.result)
       })
@@ -29,7 +27,7 @@ const Compare = () => {
 
   return (
     <>
-    {translationPage && compare &&
+    {translationPage && compare ?
     <div className="body-compare">
       <div className="title-gray title-green  white">
         <div>{translationPage.pagename}</div>
@@ -52,6 +50,9 @@ const Compare = () => {
               </>
             ))}
           </div>
+      </div>:
+      <div className="mt30">
+        There are no translations available yet for this page. Did you assign a translator?
       </div>}
     </>
   );

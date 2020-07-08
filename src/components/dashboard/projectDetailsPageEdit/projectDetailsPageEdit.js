@@ -45,7 +45,7 @@ const ProjectDetailsPageEdit = () => {
       setProjectCounter(0)
     })
     .catch((err) => console.log(err))
-  }, [basePageID.params.basePageID, projID.params.projID, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
+  }, [basePageID.params.basePageID, projID.params.projID, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, setProjectCounter, userId]);
 
 
   return (
