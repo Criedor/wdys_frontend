@@ -11,7 +11,7 @@ import './Navigation.css';
 const Navigation = () => {
   const history = useHistory()
   const { setModal, setModalOption } = useContext(ModalContext)
-  const { role, setRole, setUserId, setUserName, userId } = useContext(UserContext)
+  const { role, setRole, setUserId, setUserName, userId, userName } = useContext(UserContext)
 
 
   const redirect = () =>{
@@ -65,8 +65,11 @@ const Navigation = () => {
     <div className="navbar">
         <div className='navbar-contain'>
         <div className='navbar-logo nav-btn' onClick={() => redirect()}><Logo/></div>
-        {userId? 
+        {userId?
+          <>
+          <div style={{margiRight: '1em'}}>Hi {userName}</div>
           <div className='navbar-logger' onClick={() => logout()}>Logout</div>
+          </>
           :<div className='navbar-logger' onClick={() => login()}>Login</div>
         }
         </div>
