@@ -8,6 +8,7 @@ import "../tables/Tables.css";
 import "../Dashboard.css"
 import "./Translation.css"
 import UserContext from "../../../contexts/UserContext";
+let uniqid = require('uniqid');
 
 
 
@@ -17,15 +18,12 @@ const Translation = () => {
   const [page, setPage] = useState(0)
   const history = useHistory()
   
-  console.log(userId)
   useEffect(() => {
     Axios
     .get(`https://wdys.herokuapp.com/translation/${userId}`, {headers: {'Content-Type':'application/json'}})
     .then((res) => { 
-      console.log(res);
       setPages(res.data);
       setPage(res.data[0]);
-      console.log('check rendering')
     })
     .catch((err) => console.log(err))
   }, [userId]);
@@ -50,11 +48,11 @@ const Translation = () => {
         <div className="mt30">There are currently no pages assigned to you.</div>
         }
         {pages.map((item) => (
-          <div className="assigned-proj-TR table-grid" key={item.projectname}>
-            <div>{item.pagename}</div>
-            <div>{item.baselang}</div>
-            <div>{moment(item.deadline).format('DD-MM-YYYY')}</div>
-            <div className={`center ${item._id === page._id ? 'green' : ''}`}>
+          <div className="assigned-proj-TR table-grid" key={uniqid()}>
+            <div key={uniqid()}>{item.pagename}</div>
+            <div key={uniqid()}>{item.baselang}</div>
+            <div key={uniqid()}>{moment(item.deadline).format('DD-MM-YYYY')}</div>
+            <div key={uniqid()} className={`center ${item._id === page._id ? 'green' : ''}`}>
               <Visibility onClick={()=>setPage(item)}/>
             </div>
           </div>

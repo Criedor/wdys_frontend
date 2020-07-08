@@ -37,7 +37,7 @@ const Login = () => {
             history.push("/translation");
             break;
           default:
-            history.push("/error");
+            history.push("/");
         }
         setModal(0);
       });
