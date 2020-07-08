@@ -6,7 +6,7 @@ let uniqid = require('uniqid');
 
 
 const AssignedPagesTR = ({ translatorDetails, assignedPages }) => {
-  const {projID} = useParams()
+  const {userId} = useParams()
 
 
   return (
@@ -28,7 +28,7 @@ const AssignedPagesTR = ({ translatorDetails, assignedPages }) => {
             <div>{item.pagename}</div>
             <div>{item.description}</div>
             <div className="center">
-            <Link to={`/projects/${projID}/${item.base_page_id}/${item._id}/compare`} >
+            <Link to={`/projects/${userId}/${item._id}/compare`} >
               <Visibility />
             </Link>
             </div>
