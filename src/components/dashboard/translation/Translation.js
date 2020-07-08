@@ -17,15 +17,12 @@ const Translation = () => {
   const [page, setPage] = useState(0)
   const history = useHistory()
   
-  console.log(userId)
   useEffect(() => {
     Axios
     .get(`https://wdys.herokuapp.com/translation/${userId}`, {headers: {'Content-Type':'application/json'}})
     .then((res) => { 
-      console.log(res);
       setPages(res.data);
       setPage(res.data[0]);
-      console.log('check rendering')
     })
     .catch((err) => console.log(err))
   }, [userId]);

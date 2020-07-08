@@ -38,7 +38,7 @@ const Compare = () => {
     <div className="body-compare">
       <div className="title-gray title-green  white">
         <div>{translationPage.pagename}</div>
-        <div className="white" onClick={()=>downloadJson()}><a href="" className="white download" id="downloadAnchorElem">Download as JSON</a></div>
+        <div className="white" onClick={()=>downloadJson()}><p className="white download" id="downloadAnchorElem">Download as JSON</p></div>
         </div>
         <div className="compare">
             <div className="title-gray">
