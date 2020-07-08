@@ -1,0 +1,6 @@
+# Catch all redirects route
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
