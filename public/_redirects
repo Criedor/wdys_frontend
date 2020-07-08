@@ -1,3 +1,4 @@
 /projects/*               /projects
 /translators/*            /translators
-/*                         /
+/translation/*            /translation
+/*                        /
