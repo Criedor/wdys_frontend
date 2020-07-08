@@ -17,12 +17,15 @@ const Translation = () => {
   const [page, setPage] = useState(0)
   const history = useHistory()
   
+  console.log(userId)
   useEffect(() => {
     Axios
     .get(`https://wdys.herokuapp.com/translation/${userId}`, {headers: {'Content-Type':'application/json'}})
     .then((res) => { 
-      console.log(res.data);
+      console.log(res);
       setPages(res.data);
+      setPage(res.data[0]);
+      console.log('check rendering')
     })
     .catch((err) => console.log(err))
   }, [userId]);
@@ -31,14 +34,15 @@ const Translation = () => {
 
   return (
     <>
-    {pages &&
+    {pages && page &&
     <div className="body-translation">
       <div>
         <div className="title-gray">
             Assigned Pages
         </div>
-        {pages.length>0?<div className="assigned-proj-TR header table-grid">
-        <div>Page Name</div>
+        {pages.length > 0 ?
+        <div className="assigned-proj-TR header table-grid">
+          <div>Page Name</div>
           <div>Translation language</div>
           <div>Deadline</div>
           <div>View</div>
@@ -50,30 +54,25 @@ const Translation = () => {
             <div>{item.pagename}</div>
             <div>{item.baselang}</div>
             <div>{moment(item.deadline).format('DD-MM-YYYY')}</div>
-            <div className="center">
+            <div className={`center ${item._id === page._id ? 'green' : ''}`}>
               <Visibility onClick={()=>setPage(item)}/>
             </div>
           </div>
         ))}
       </div>
-      {page ===0?
+
       <div>
         <div className="title-gray">
           Project Details
         </div>
-        <div className="mt30">
-          Select a page to see details.
-        </div>
-      </div>
-      :
-      <div>
+
         <div className="card-translation ">
           <div className="card-top green-bg">
              {page.pagename}
           </div>
           <div className="card-bottom ">
             <div className="page-info mt0">
-              Translate form:<strong> {page.base_lang}</strong>
+              Translate from:<strong> {page.base_lang}</strong>
             </div>
             <div className="page-info">
               To:<strong> {page.lang}</strong>
@@ -96,7 +95,7 @@ const Translation = () => {
           </div>
         </div>
       </div>
-      }
+
     </div>
     }
   </>
