@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
+import GetAppIcon from '@material-ui/icons/GetApp';
+import Spinner from '../spinner/Spinner'
 import Axios from 'axios'
 import "../cards/Card.css";
 import "../tables/Tables.css";
@@ -12,6 +14,7 @@ const Compare = () => {
   const { pageID } = useParams()
   const [translationPage, setTranslationPage] = useState()
   const [compare, setCompare] = useState()
+  const [loaded, setLoaded] = useState(0)
 
   const downloadJson = () =>{
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(compare, undefined, 2));
@@ -27,18 +30,21 @@ const Compare = () => {
         setTranslationPage(res.data.translationpage)
         setCompare(res.data.result)
       })
+      .then(() => setLoaded(1))
       .catch((err) => console.log(err))
   },[pageID])
 
 
 
   return (
-    <>
-    {translationPage && compare ?
+    <>{ loaded === 0 ? <Spinner /> :
+    translationPage && compare ?
     <div className="body-compare">
       <div className="title-gray title-green  white">
         <div>{translationPage.pagename}</div>
-        <div className="white" onClick={()=>downloadJson()}><p className="white download" id="downloadAnchorElem">Download as JSON</p></div>
+        <div className="white" onClick={()=>downloadJson()}>
+          <a href="./" className="white download" id="downloadAnchorElem"><GetAppIcon /></a>
+        </div>
         </div>
         <div className="compare">
             <div className="title-gray">
@@ -49,20 +55,23 @@ const Compare = () => {
             </div>
             {compare.map((item) => (
               <>
-              <div className={`compare-txt }`} key={uniqid()}>
-            {item.depth>0?<div className="child" >→</div>:""}{item.baseText}
-              </div>
-              <div className={`compare-txt ${item.depth>0?"child":""}`} key={uniqid()}>
+              {item.depth>0? null :
+              <div className='compare-txt' key={uniqid()}>
+                {item.baseText}
+              </div>}
+              {item.depth>0? null :
+              <div className='compare-txt' key={uniqid()}>
                 {item.translation}
-              </div>
+              </div>}
               </>
             ))}
           </div>
-      </div>:
+      </div>
+      :
       <div className="mt30">
         There are no translations available yet for this page. Did you assign a translator?
-      </div>}
-    </>
+      </div>
+    }</>
   );
 };
 
