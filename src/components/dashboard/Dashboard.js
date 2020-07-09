@@ -80,22 +80,20 @@ const Dashboard = () => {
             )}
           />
 
+        <Route
+          path="/projects/:projID/:basePageID/update"
+          render={(props) => (
+            <ThemeProvider theme={inputTheme320}>
+              <ProjectDetailsPageEdit {...props} />
+            </ThemeProvider>
+          )}
+        />
+
           <Route
             exact
             path="/projects/:projID/:basePageID/:pageID"
             render={(props) => (
-              <ThemeProvider theme={inputTheme320}>
                 <Compare {...props} />
-              </ThemeProvider>
-            )}
-          />
-
-          <Route
-            path="/projects/:projID/:basePageID/update"
-            render={(props) => (
-              <ThemeProvider theme={inputTheme320}>
-                <ProjectDetailsPageEdit {...props} />
-              </ThemeProvider>
             )}
           />
 
@@ -123,8 +121,6 @@ const Dashboard = () => {
             )}
           />
 
-
-
           <Route
             path="/projects/:projID"
             render={(props) => (
@@ -143,6 +139,7 @@ const Dashboard = () => {
               </ThemeProvider>
             )}
           />
+
           <Route
             exact
             path="/projects"
@@ -152,6 +149,7 @@ const Dashboard = () => {
               </ThemeProvider>
             )}
           />
+
           <Route
             exact
             path="/translation"
