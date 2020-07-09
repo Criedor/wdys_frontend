@@ -1,14 +1,12 @@
 import React from "react";
 import { Visibility } from "@material-ui/icons";
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "../tables/Tables.css";
 let uniqid = require('uniqid');
 
 
 const AssignedPagesTR = ({ translatorDetails, assignedPages }) => {
-  const {translatorID} = useParams()
-
-
+  
   return (
     <>
     {assignedPages && assignedPages.length === 0 ? 
