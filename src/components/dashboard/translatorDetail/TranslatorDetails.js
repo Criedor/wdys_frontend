@@ -28,7 +28,7 @@ const TranslatorDetails = () => {
     .catch((err) => console.log(err))
   }, [userId, translatorID])
 
-  // console.log(translatorDetails)
+//  console.log(translatorDetails)
 
   return (
     <>

@@ -1,7 +1,8 @@
 .dashboard {
     display: grid;
     grid-column: 1 / span 3;
-    grid-template-columns: minmax(230px, 1fr) minmax(280px, 1140px) 1fr;
+    grid-template-columns: 230px 1140px 1fr;
+    column-gap: 1em;
     padding-top: 5em;
     }
 
@@ -76,9 +77,9 @@ label {
 
 .body-project {
     display: grid;
-    grid-template-columns: repeat(3, minmax(280px, 380px));
+    grid-template-columns: repeat(3, 380px);
     column-gap: 1.875em;
-    grid-template-rows: 260px;
+    /* grid-template-rows: 260px; */
     column-gap: 1.875em;
     row-gap: 1.875em;
 }

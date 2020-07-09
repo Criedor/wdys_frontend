@@ -1,5 +1,5 @@
 .card {
-    height: 260px;
+    height: 320px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -33,6 +33,7 @@
 
 .card-bottom .project-info, .trans-info {
     margin-bottom: 1.25em;
+    line-height: 1.5em;
 }
 
 .trans-info .lang-code {

@@ -29,6 +29,7 @@ const Compare = () => {
       .then((res) => { 
         setTranslationPage(res.data.translationpage)
         setCompare(res.data.result)
+        console.log(res.data)
       })
       .then(() => setLoaded(1))
       .catch((err) => console.log(err))
