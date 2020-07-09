@@ -6,7 +6,7 @@ let uniqid = require('uniqid');
 
 
 const AssignedPagesTR = ({ translatorDetails, assignedPages }) => {
-  const {userId} = useParams()
+  const {translatorID} = useParams()
 
 
   return (
@@ -23,17 +23,20 @@ const AssignedPagesTR = ({ translatorDetails, assignedPages }) => {
           <div>View</div>
         </div>
         { assignedPages &&
-        assignedPages.map((item) => (
+        assignedPages.map((item) => 
+        (
           <div className="table-grid project-pages-TM" key={uniqid()}>
             <div>{item.pagename}</div>
             <div>{item.description}</div>
             <div className="center">
-            <Link to={`/projects/${userId}/${item._id}/compare`} >
+            <Link to={`/translators/${item.translator_id}/${item._id}`} >
+              {console.log(item)}
               <Visibility />
             </Link>
             </div>
           </div>
-        ))
+        )
+        )
       }
       </>
     }

@@ -82,7 +82,7 @@ const Dashboard = () => {
 
           <Route
             exact
-            path="/projects/:projID/:basePageID/:pageID/compare"
+            path="/projects/:projID/:basePageID/:pageID"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
                 <Compare {...props} />
@@ -109,6 +109,12 @@ const Dashboard = () => {
           />
 
           <Route
+            path="/translators/:translatorID/:pageID"
+            render={(props) => <Compare {...props} />}
+          />
+
+
+          <Route
             path="/translators/:translatorID"
             render={(props) => (
               <ThemeProvider theme={inputTheme320}>
@@ -117,10 +123,7 @@ const Dashboard = () => {
             )}
           />
 
-          <Route
-            path="/translators/:userID/:pageID"
-            render={(props) => <Compare {...props} />}
-          />
+
 
           <Route
             path="/projects/:projID"

@@ -28,7 +28,7 @@ const {projID} = useParams()
             </div>
           <div>{page.status}</div>
           <div className="center">
-            <Link to={`/projects/${projID}/${page.base_page_id}/${page._id}/compare`} >
+            <Link to={`/projects/${projID}/${page.base_page_id}/${page._id}`} >
               <Visibility />
             </Link>
           </div>
