@@ -49,7 +49,10 @@ const SignIn = () => {
       <div className="login-body">
         <form onSubmit={(e) => signin(e)} method="POST">
           <h2>Sign up </h2>
-          <label> Name:</label>
+          <p>
+            Thank you for your interest in WDYS! Since this is a closed alpha version, it's currently not open to public. Please <a href="mailto:info@chrsstnr.com"><strong>contact us </strong></a>for further information.<br/><br/><br/>
+          </p>
+          {/* <label> Name:</label>
           <input type="text" name="name" placeholder="Enter your name" />
 
           <label> Email:</label>
@@ -65,7 +68,7 @@ const SignIn = () => {
                 setModalOption(1);
               }}
             > login</strong>
-          </p>
+          </p> */}
         </form>
       </div>
     </>
