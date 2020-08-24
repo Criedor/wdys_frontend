@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import "./Modal.css";
 
 const SignIn = () => {
-  const { setModal, setModalOption } = useContext(ModalContext);
+  const { setModal, /* setModalOption */ } = useContext(ModalContext);
   const { setUserId, setUserName, setRole } = useContext(UserContext);
 
   let history = useHistory();
