@@ -28,7 +28,7 @@ const Project = () => {
     <>
     {userProjects.length !== 0 ?
       <div className="body-project">
-        {userProjects.map(project => 
+        {userProjects.slice(0).reverse().map(project => 
             <CardProjects key={uniqid()} id={project._id} projectname={project.projectname} baselang={project.baselang} langs={project.langs} deadline={project.deadline}/>
           )}
       </div>
