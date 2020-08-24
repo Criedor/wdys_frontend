@@ -10,7 +10,7 @@ import Axios from 'axios'
 import "../Dashboard.css";
 
 const ProjectDetailsPage = () => {
-  const { setModal, setModalOption,setModalObject} = useContext(ModalContext);
+  const { modal, setModal, setModalOption,setModalObject} = useContext(ModalContext);
   const { userId, setAssignTranslatorTranslationPages, setAssignTranslatorTranslators } = useContext(UserContext);
 
   
@@ -37,7 +37,10 @@ const ProjectDetailsPage = () => {
       setBaseProject(res.data.baseproject)
     })
     .catch((err) => console.log(err))
-  }, [basePageID.params.basePageID, projID.params.projID,  setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId]);
+
+    if (modal === 0) console.log("TR changed")
+    else console.log("TR changed")
+  }, [basePageID.params.basePageID, projID.params.projID,  setAssignTranslatorTranslationPages, setAssignTranslatorTranslators, userId, modal]);
 
 
   return (

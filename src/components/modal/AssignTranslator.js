@@ -17,15 +17,11 @@ const AssignTranslator = () => {
   const handleAssign = (e)=>{
     e.preventDefault();
 
-    console.log(selectedTranslator)
-    console.log(selectedTranslationPage)
-
     Axios
       .put(`https://wdys.herokuapp.com/projects/${projID.params.projID}/assign`,{page_id: selectedTranslationPage, translator_id:selectedTranslator})
       .then((res) => { 
         setModal(0);
         setModalOption(1);
-        console.log(res)
         history.push(`${projID.params.basePageID}`)
       })
       .catch((err) => console.log(err))    
